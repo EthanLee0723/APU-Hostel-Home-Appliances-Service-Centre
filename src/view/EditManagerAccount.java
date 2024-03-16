@@ -5,6 +5,7 @@
  */
 package view;
 import models.Managers;
+import controller.EditManagerAccController;
 /**
  *
  * @author User
@@ -70,12 +71,13 @@ public class EditManagerAccount extends javax.swing.JFrame {
         lblNewPassword.setToolTipText("");
         lblNewPassword.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        tbxNewPassword.setBackground(new java.awt.Color(255, 255, 255));
-
-        tbxNewUsername.setBackground(new java.awt.Color(255, 255, 255));
-
         btnSaveEditManagerAcc.setText("Save");
         btnSaveEditManagerAcc.setPreferredSize(new java.awt.Dimension(200, 50));
+        btnSaveEditManagerAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveEditManagerAccActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +127,17 @@ public class EditManagerAccount extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveEditManagerAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditManagerAccActionPerformed
+        String inputtedUsername = tbxNewUsername.getText();
+        String inputtedPassword = tbxNewPassword.getText();
+        Managers editedManager = new Managers();
+        editedManager.setId(currentManager.getId());
+        editedManager.setUsername(inputtedUsername);
+        editedManager.setPassword(inputtedPassword);
+        EditManagerAccController editManagerAccController = new EditManagerAccController();
+        editManagerAccController.editManagerAcc(editedManager);
+    }//GEN-LAST:event_btnSaveEditManagerAccActionPerformed
 
     /**
      * @param args the command line arguments

@@ -188,5 +188,40 @@ public class Managers{
         return true;
     }
     
+    public void editManager(Managers editedManager)
+    {
+        ArrayList<Object> readFile = readFile();
+        try
+        {
+            PrintWriter outputFile = new PrintWriter(file);
+            for(int x = 0;x < readFile.size();x++)
+            {
+                if(x == 0)
+                {
+                    outputFile.println(readFile.get(x));
+                }
+                else
+                {
+                    Managers managerDetails = (Managers)readFile.get(x);
+                    outputFile.println(managerDetails.getId());
+                    if(managerDetails.getId() == editedManager.getId())
+                    {
+                        outputFile.println(editedManager.getUsername());
+                        outputFile.println(editedManager.getPassword());
+                    }
+                    else
+                    {
+                        outputFile.println(managerDetails.getUsername());
+                        outputFile.println(managerDetails.getPassword());
+                    }
+                }
+            }
+            outputFile.close();
+        }
+        catch(IOException e)
+        {
+            
+        }
+    }
     
 }
