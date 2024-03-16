@@ -7,6 +7,10 @@ package view;
 
 import java.io.*;    
 import java.util.Scanner;
+import models.Managers;
+import controller.LoginController;
+import view.ManagerDashboard;
+import view.Login;
 /**
  *
  * @author User
@@ -102,7 +106,8 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String inputtedUsername = txtLoginUsername.getText();
         String inputtedPwd = pwdTxtLoginPwd.getText();
-        
+        LoginController loginController = new LoginController();
+        loginController.userLogIn(inputtedUsername,inputtedPwd,this);
     }//GEN-LAST:event_btnLoginMouseClicked
 
     /**

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class Managers {
+public class Managers{
     private File file = new File("src/database/Managers.txt");
     private int id;
     private String username;
@@ -25,6 +25,53 @@ public class Managers {
         if(!isFileExists())
         {
             createDefaultFile();
+        }
+    }
+    
+    public Managers(String username)
+    {
+        ArrayList<Managers> allManagers = getAllManagerList();
+        Managers managerDetails = new Managers();
+        for(int x = 0;x < allManagers.size();x++)
+        {
+            if(allManagers.get(x).getUsername().equals(username))
+            {
+                setId(allManagers.get(x).getId());
+                setUsername(allManagers.get(x).getUsername());
+                setPassword(allManagers.get(x).getPassword());
+                break;
+            }
+        }
+    }
+    
+    public Managers(int managerId)
+    {
+        ArrayList<Managers> allManagers = getAllManagerList();
+        for(int x = 0;x < allManagers.size();x++)
+        {
+            if(allManagers.get(x).getId() == managerId)
+            {
+                setId(allManagers.get(x).getId());
+                setUsername(allManagers.get(x).getUsername());
+                setPassword(allManagers.get(x).getPassword());
+                break;
+            }
+        }
+    }
+    
+    public Managers(String username,String password)
+    {
+        ArrayList<Managers> allManagers = getAllManagerList();
+        Managers managerDetails = new Managers();
+        for(int x = 0;x < allManagers.size();x++)
+        {
+            if(allManagers.get(x).getUsername().equals(username) && allManagers.get(x).getPassword().equals(password))
+            {
+                setId(allManagers.get(x).getId());
+                setUsername(allManagers.get(x).getUsername());
+                setPassword(allManagers.get(x).getPassword());
+                break;
+            }
         }
     }
     
@@ -45,7 +92,7 @@ public class Managers {
         return username;
     }
     
-    public String getPassowrd()
+    public String getPassword()
     {
         return password;
     }
@@ -65,9 +112,9 @@ public class Managers {
         password = newPassword;
     }
     
-    public ArrayList<Object> getAllManagerList()
+    public ArrayList<Object> readFile()
     {
-        ArrayList<Object> allManagers = new ArrayList<Object>();
+        ArrayList<Object> readFile = new ArrayList<Object>();
         try
         {
            Scanner inputFile = new Scanner(file);
@@ -76,13 +123,13 @@ public class Managers {
            {
                if(isFirstLoop)
                {
-                   allManagers.add(inputFile.nextLine());
+                   readFile.add(inputFile.nextLine());
                    isFirstLoop = false;
                }
                else
                {
                    Managers managerDetails = new Managers(Integer.parseInt(inputFile.nextLine()),inputFile.nextLine(),inputFile.nextLine());
-                   allManagers.add(managerDetails);
+                   readFile.add(managerDetails);
                }
            }
            inputFile.close();
@@ -91,14 +138,28 @@ public class Managers {
         {
             System.out.println(e);
         }
+        return readFile;
+    }
+    
+    public ArrayList<Managers> getAllManagerList()
+    {
+        ArrayList<Object> readFile = readFile();
+        ArrayList<Managers> allManagers = new ArrayList<Managers>();
+        for(int x = 1;x < readFile.size();x++)
+        {
+            Managers managerDetails = (Managers) readFile.get(x);
+            allManagers.add(managerDetails);
+        }
         return allManagers;
     }
+    
+    
     
     public void createDefaultFile()
     {
         try
         {
-            String defaultData [] = {"0","0","admin","admin123"};
+            String defaultData [] = {"1","1","admin","admin123"};
             PrintWriter outputFile = new PrintWriter(file);
             for(int x = 0;x < defaultData.length;x++)
             {
