@@ -7,7 +7,6 @@ package view;
 
 import java.io.*;    
 import java.util.Scanner;
-
 /**
  *
  * @author User
@@ -18,7 +17,6 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        
         initComponents();
     }
 
@@ -104,24 +102,7 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String inputtedUsername = txtLoginUsername.getText();
         String inputtedPwd = pwdTxtLoginPwd.getText();
-        try
-        {
-            File file = new File("src/database/Managers.txt");
-//            PrintWriter outputFile = new PrintWriter(file);
-//            outputFile.println("testing");
-//            outputFile.close();
-
-            Scanner inputFile = new Scanner(file);
-            while (inputFile.hasNext()){
-                String friendName = inputFile.nextLine();
-                System.out.println(friendName);
-             }
-             inputFile.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+        
     }//GEN-LAST:event_btnLoginMouseClicked
 
     /**

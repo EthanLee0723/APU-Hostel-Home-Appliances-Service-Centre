@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package view;
+
+import view.Login;
 /**
  *
  * @author User
@@ -14,6 +16,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Login login = new Login();
+        login.setVisible(true);
         
     }
     
