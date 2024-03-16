@@ -18,7 +18,23 @@ public class Managers {
     {
         try
         {
-            PrintWriter outputFile = new PrintWriter("managers");
+            File newFile = new File("src/database/Managers.txt");
+            PrintWriter outputFile = new PrintWriter(newFile);
+            outputFile.println("testing");
+            outputFile.close();
+            
+            Scanner keyboard = new Scanner(System.in);
+            String filename = keyboard.nextLine();
+            File file = new File("src/database/Managers.txt");
+            Scanner inputFile = new Scanner(file);
+            while (inputFile.hasNext()){
+                String friendName = inputFile.nextLine();
+                System.out.println(friendName);
+             }
+             inputFile.close();
+
+
+
         }
         catch(Exception e)
         {
