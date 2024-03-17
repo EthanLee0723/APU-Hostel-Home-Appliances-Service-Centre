@@ -5,6 +5,8 @@ import view.CreateManager;
 import view.Login;
 import view.EditTechnicianSelection;
 import view.EditCustomerSelection;
+import controller.Appt.ApptManagement;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -40,6 +42,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         btnEditTechnicianDetails = new javax.swing.JButton();
         btnCreateCustomer = new javax.swing.JButton();
         btnEditCustomerDetails = new javax.swing.JButton();
+        apptManagementButton = new javax.swing.JButton();
         btnManagerLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +105,15 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         getContentPane().add(btnEditCustomerDetails);
 
+        apptManagementButton.setText("Appointment Management");
+        apptManagementButton.setPreferredSize(new java.awt.Dimension(200, 200));
+        apptManagementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apptManagementButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(apptManagementButton);
+
         btnManagerLogout.setText("Logout");
         btnManagerLogout.setPreferredSize(new java.awt.Dimension(200, 200));
         btnManagerLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +174,11 @@ public class ManagerDashboard extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
+    private void apptManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptManagementButtonActionPerformed
+        ApptManagement im = new ApptManagement();
+        im.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_apptManagementButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +216,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton apptManagementButton;
     private javax.swing.JButton btnCreateCustomer;
     private javax.swing.JButton btnCreateManager;
     private javax.swing.JButton btnCreateTechnician;
