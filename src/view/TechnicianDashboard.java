@@ -29,6 +29,7 @@ import java.util.List;
 import javax.swing.JButton;
 import view.BillingManagement;
 import view.ViewAppoinment;
+import view.FeedbackAppointment;
 
 public class TechnicianDashboard extends javax.swing.JFrame {
     private int loggedTechID;
@@ -53,7 +54,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         appoinmentViewButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        viewFeedback = new javax.swing.JButton();
         BillingButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -91,10 +92,10 @@ public class TechnicianDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Feedback");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        viewFeedback.setText("Feedback");
+        viewFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                viewFeedbackActionPerformed(evt);
             }
         });
 
@@ -118,7 +119,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(viewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(appoinmentViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -135,7 +136,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                         .addGap(234, 234, 234))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, jButton4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, viewFeedback});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +145,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -155,7 +156,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addContainerGap(183, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, jButton4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, viewFeedback});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,10 +207,13 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void viewFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFeedbackActionPerformed
+         setVisible(false);
+         dispose();
+         FeedbackAppointment fa = new FeedbackAppointment(loggedTechID);
+         fa.setVisible(true);
 
-
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_viewFeedbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,8 +255,8 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     private javax.swing.JButton appoinmentViewButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton viewFeedback;
     // End of variables declaration//GEN-END:variables
 }

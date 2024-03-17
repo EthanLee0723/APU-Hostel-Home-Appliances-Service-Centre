@@ -10,14 +10,13 @@ import controller.TechnicianController;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
-public class ViewAppoinment extends javax.swing.JFrame {
+public class FeedbackAppointment extends javax.swing.JFrame {
     private final ApptServiceController apptService;
     private int loggedTechID;
     /**
-     * Creates new form ViewAppoinment
+     * Creates new form FeedbackAppointment
      */
-    public ViewAppoinment(int techid) {
-        
+    public FeedbackAppointment(int techid) {
         initComponents();
         this.apptService = new ApptServiceController();
         performFileRelatedTask(techid);
@@ -33,11 +32,11 @@ public class ViewAppoinment extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        appoinmentTable = new javax.swing.JTable();
+        feedbackTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        appoinmentTable.setModel(new javax.swing.table.DefaultTableModel(
+        feedbackTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,14 +47,14 @@ public class ViewAppoinment extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(appoinmentTable);
+        jScrollPane1.setViewportView(feedbackTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
@@ -64,7 +63,7 @@ public class ViewAppoinment extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,28 +72,27 @@ public class ViewAppoinment extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     private void performFileRelatedTask(int techid) {
         loggedTechID = techid;
         TechnicianController managerController = new TechnicianController();
         HashMap<String, Object> techDeatils = managerController.getTechnicianDetails(loggedTechID);
-        String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name"};
+        String[] columnNames = {"Name", "Date", "Time", "Service Type", "Technician Name", "Customer Name", "Feedback"};
          // Create DefaultTableModel with column names
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
         // Set the table model to your table component
-        appoinmentTable.setModel(model);
+        feedbackTable.setModel(model);
         
         apptService.getAllbyTechnicianName(techDeatils.get("username").toString()).forEach((appt) -> {
             model.addRow(new Object[]{
                 appt.getName(),
                 appt.getDate(),
-                appt.getTime(),
+                appt.getTime(),    
                 appt.getServiceType(),
-                appt.getAmount(),
-                appt.getPaymentStatus(),
                 appt.getTechnician(),
                 appt.getCustomerName(),
-                
+                appt.getFeedback()
             });
         });
     }
@@ -113,26 +111,26 @@ public class ViewAppoinment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewAppoinment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewAppoinment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewAppoinment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewAppoinment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new ViewAppoinment().setVisible(true);
+//                new FeedbackAppointment().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable appoinmentTable;
+    private javax.swing.JTable feedbackTable;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
