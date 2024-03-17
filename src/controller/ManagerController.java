@@ -4,17 +4,25 @@
  * and open the template in the editor.
  */
 package controller;
+
 import models.Managers;
+
 /**
  *
  * @author User
  */
-public class CreateManagerController {
+public class ManagerController {
     public void CreateManager(String newUsername,String newPassword)
     {   
         Managers newManager = new Managers();
         newManager.setUsername(newUsername);
         newManager.setPassword(newPassword);
         newManager.createNewManager();
+    }
+    
+    public void editManagerAcc(Managers editedManager)
+    {
+        Managers manager = new Managers();
+        manager.editManager(editedManager);
     }
 }

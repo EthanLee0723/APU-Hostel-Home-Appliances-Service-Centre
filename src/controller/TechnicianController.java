@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package controller;
+
 import models.Technicians;
+
 /**
  *
  * @author User
  */
-public class CreateTechnicianController {
+public class TechnicianController {
     public void createNewTechnician(String newUsername, String newPassword)
     {
         Technicians newManager = new Technicians();
@@ -17,5 +19,4 @@ public class CreateTechnicianController {
         newManager.setPassword(newPassword);
         newManager.createNewTechnican();
     }
-    
 }

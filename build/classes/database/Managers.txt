@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 10
 1
 ih
 kjk
+=======
+11
+1
+admin
+admin321
+>>>>>>> dev
 7
 test123
 test123
@@ -13,4 +20,11 @@ test
 test123
 10
 test
+<<<<<<< HEAD
 test 123
+=======
+test123
+11
+test
+test123
+>>>>>>> dev
