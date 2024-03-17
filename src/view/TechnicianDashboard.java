@@ -28,13 +28,15 @@ import java.io.FileWriter;
 import java.util.List;
 import javax.swing.JButton;
 import view.BillingManagement;
+import view.ViewAppoinment;
 
 public class TechnicianDashboard extends javax.swing.JFrame {
-
+    private int loggedTechID;
     /**
      * Creates new form TechnicianDashboard
      */
-    public TechnicianDashboard() {
+    public TechnicianDashboard(int techID) {
+        loggedTechID = techID;
         initComponents();
     }
 
@@ -49,7 +51,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        appoinmentViewButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         BillingButton = new javax.swing.JButton();
@@ -66,10 +68,10 @@ public class TechnicianDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("View Appointments");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        appoinmentViewButton.setText("View Appointments");
+        appoinmentViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                appoinmentViewButtonActionPerformed(evt);
             }
         });
 
@@ -118,7 +120,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(appoinmentViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(105, 105, 105))
@@ -133,7 +135,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                         .addGap(234, 234, 234))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, jButton1, jButton2, jButton4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, jButton4});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,13 +149,13 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(appoinmentViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(183, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, jButton1, jButton2, jButton4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, jButton4});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,13 +186,16 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+    private void appoinmentViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appoinmentViewButtonActionPerformed
+         setVisible(false);
+         dispose();
+         ViewAppoinment va = new ViewAppoinment(loggedTechID);
+         va.setVisible(true);
     }
 
     private void updateAppointmentTable() {
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_appoinmentViewButtonActionPerformed
 
     private void jButton3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButton3AncestorAdded
 
@@ -236,15 +241,15 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TechnicianDashboard().setVisible(true);
+//                new TechnicianDashboard().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BillingButton;
+    private javax.swing.JButton appoinmentViewButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

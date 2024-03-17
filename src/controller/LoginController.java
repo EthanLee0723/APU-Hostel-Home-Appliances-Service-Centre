@@ -10,6 +10,7 @@ import models.Technicians;
 import models.Customers;
 import java.util.ArrayList;
 import view.ManagerDashboard;
+import view.TechnicianDashboard;
 import view.Login;
 /**
  *
@@ -98,7 +99,10 @@ public class LoginController {
         }
         else if(technician.getId() != 0)
         {
-            System.out.println("technician");
+            TechnicianDashboard technicianDashboard = new TechnicianDashboard(technician.getId());
+            login.setVisible(false);
+            login.dispose();
+            technicianDashboard.setVisible(true);
         }
         else if(customer.getId() != 0)
         {

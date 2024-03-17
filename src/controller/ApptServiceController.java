@@ -46,7 +46,28 @@ public class ApptServiceController {
         }
         return appts;
     }
+    
+    public List<Appt> getAllbyTechnicianName(String name) {
+        List<Appt> appts = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new FileInputStream("storage/appointment.txt"))) {
+            while (scanner.hasNextLine()) {
+                String apptLine = scanner.nextLine();
 
+                String apptInfo[] = apptLine.split(",");
+                if (apptInfo[6].equals(name)) {
+                    Appt appt = new Appt(apptInfo[0],apptInfo[1],apptInfo[2],apptInfo[3],Double.parseDouble(apptInfo[4]),apptInfo[5]
+                        ,apptInfo[6],apptInfo[7],apptInfo[8]);
+
+                    appts.add(appt);
+                }
+                
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return appts;
+    }
+    
     public Appt getApptByIndex(int index) {
         List<Appt> listOfAppt = getAll();
 
