@@ -19,4 +19,13 @@ public class TechnicianController {
         newManager.setPassword(newPassword);
         newManager.createNewTechnican();
     }
+    
+    public void editTechnicianAcc(int technicianId,String editedUsername,String editedPwd)
+    {
+        Technicians technician = new Technicians();
+        technician.setId(technicianId);
+        technician.setUsername(editedUsername);
+        technician.setPassword(editedPwd);
+        technician.editTechnician();
+    }
 }

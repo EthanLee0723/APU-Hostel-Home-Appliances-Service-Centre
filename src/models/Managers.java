@@ -216,7 +216,7 @@ public class Managers{
         }
     }
     
-    public void editManager(Managers editedManager)
+    public void editManager()
     {
         ArrayList<Object> readFile = readFile();
         try
@@ -232,10 +232,10 @@ public class Managers{
                 {
                     Managers managerDetails = (Managers)readFile.get(x);
                     outputFile.println(managerDetails.getId());
-                    if(managerDetails.getId() == editedManager.getId())
+                    if(managerDetails.getId() == getId())
                     {
-                        outputFile.println(editedManager.getUsername());
-                        outputFile.println(editedManager.getPassword());
+                        outputFile.println(getUsername());
+                        outputFile.println(getPassword());
                     }
                     else
                     {
@@ -250,6 +250,11 @@ public class Managers{
         {
             
         }
+    }
+    
+    public Managers getManagerDetails()
+    {
+        return this;
     }
     
 }

@@ -6,12 +6,24 @@
 package controller;
 
 import models.Managers;
+import java.util.HashMap; 
 
 /**
  *
  * @author User
  */
 public class ManagerController {
+    
+    public HashMap<String, Object> getManagerDetails(int managerId)
+    {
+        Managers manager = new Managers(managerId);
+        HashMap<String, Object> managerDetails = new HashMap<>();
+        managerDetails.put("id",manager.getId());
+        managerDetails.put("username",manager.getUsername());
+        managerDetails.put("password", manager.getPassword());
+        return managerDetails;
+    }
+    
     public void CreateManager(String newUsername,String newPassword)
     {   
         Managers newManager = new Managers();
@@ -20,9 +32,12 @@ public class ManagerController {
         newManager.createNewManager();
     }
     
-    public void editManagerAcc(Managers editedManager)
+    public void editManagerAcc(int managerId,String editedUsername,String editedPwd)
     {
         Managers manager = new Managers();
-        manager.editManager(editedManager);
+        manager.setId(managerId);
+        manager.setUsername(editedUsername);
+        manager.setPassword(editedPwd);
+        manager.editManager();
     }
 }

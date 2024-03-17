@@ -47,7 +47,7 @@ public class LoginController {
         Managers manager = new Managers(username,password);
         if(manager.getId() != 0)
         {
-            ManagerDashboard managerDashboard = new ManagerDashboard(manager);
+            ManagerDashboard managerDashboard = new ManagerDashboard(manager.getId());
             login.setVisible(false);
             login.dispose();
             managerDashboard.setVisible(true);

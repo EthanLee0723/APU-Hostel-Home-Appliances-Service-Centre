@@ -1,7 +1,6 @@
 package view;
 
 import view.EditManagerAccount;
-import models.Managers;
 import view.CreateManager;
 import view.Login;
 
@@ -16,12 +15,12 @@ import view.Login;
  * @author User
  */
 public class ManagerDashboard extends javax.swing.JFrame {
-    private Managers currentManager;
+    private int loggedInManagerid;
     /**
      * Creates new form ManagerDashboard
      */
-    public ManagerDashboard(Managers managerDetails) {
-        currentManager = managerDetails;
+    public ManagerDashboard(int managerId) {
+        loggedInManagerid = managerId;
         initComponents();
     }
 
@@ -109,7 +108,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
         setVisible(false);
         dispose();
-        EditManagerAccount editManagerAcc = new EditManagerAccount(currentManager);
+        EditManagerAccount editManagerAcc = new EditManagerAccount(loggedInManagerid);
         editManagerAcc.setVisible(true);
     }//GEN-LAST:event_btnEditMyAccActionPerformed
 
