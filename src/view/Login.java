@@ -7,7 +7,6 @@ package view;
 
 import java.io.*;    
 import java.util.Scanner;
-import models.Managers;
 import controller.LoginController;
 import view.ManagerDashboard;
 import view.Login;

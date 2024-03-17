@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package view;
-import models.Managers;
 import controller.ManagerController;
 import view.ManagerDashboard;
+import java.util.HashMap; 
 /**
  *
  * @author User
  */
 public class EditManagerAccount extends javax.swing.JFrame {
-    private Managers currentManager;
+    private int loggedInManagerId;
     /**
      * Creates new form EditManagerAccount
      */
-    public EditManagerAccount(Managers managerDetails){
-        currentManager = managerDetails;
+    public EditManagerAccount(int managerId){
+        loggedInManagerId = managerId;
+        ManagerController managerController = new ManagerController();
+        HashMap<String, Object> managerDeatils = managerController.getManagerDetails(loggedInManagerId);
         initComponents();
+        tbxEditManagerCurrentUsername.setText(managerDeatils.get("username").toString());
+        tbxEditManagerCurrentPassword.setText(managerDeatils.get("password").toString());
     }
 
     /**
@@ -30,47 +34,44 @@ public class EditManagerAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNewUsername = new javax.swing.JLabel();
-        tbxCurrentPassword = new javax.swing.JTextField();
-        lblCurrentPassword = new javax.swing.JLabel();
-        tbxCurrentUsername = new javax.swing.JTextField();
-        lblCurrentUsername1 = new javax.swing.JLabel();
-        lblNewPassword = new javax.swing.JLabel();
-        tbxNewPassword = new javax.swing.JTextField();
-        tbxNewUsername = new javax.swing.JTextField();
+        lblEditManagerNewUsername = new javax.swing.JLabel();
+        tbxEditManagerCurrentPassword = new javax.swing.JTextField();
+        lblEditManagerCurrentPassword = new javax.swing.JLabel();
+        tbxEditManagerCurrentUsername = new javax.swing.JTextField();
+        lblEditManagerCurrentUsername = new javax.swing.JLabel();
+        lblEditManagerNewPassword = new javax.swing.JLabel();
+        tbxEditManagerNewPassword = new javax.swing.JTextField();
+        tbxEditManagerNewUsername = new javax.swing.JTextField();
         btnSaveEditManagerAcc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        lblNewUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNewUsername.setText("New Username:");
-        lblNewUsername.setToolTipText("");
-        lblNewUsername.setPreferredSize(new java.awt.Dimension(200, 50));
+        lblEditManagerNewUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblEditManagerNewUsername.setText("New Username:");
+        lblEditManagerNewUsername.setToolTipText("");
+        lblEditManagerNewUsername.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        tbxCurrentPassword.setEditable(false);
-        tbxCurrentPassword.setBackground(new java.awt.Color(255, 255, 255));
-        tbxCurrentPassword.setText(currentManager.getPassword());
+        tbxEditManagerCurrentPassword.setEditable(false);
+        tbxEditManagerCurrentPassword.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblCurrentPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblCurrentPassword.setText("Current Password:");
-        lblCurrentPassword.setToolTipText("");
-        lblCurrentPassword.setPreferredSize(new java.awt.Dimension(200, 50));
+        lblEditManagerCurrentPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblEditManagerCurrentPassword.setText("Current Password:");
+        lblEditManagerCurrentPassword.setToolTipText("");
+        lblEditManagerCurrentPassword.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        tbxCurrentUsername.setEditable(false);
-        tbxCurrentUsername.setBackground(new java.awt.Color(255, 255, 255));
-        tbxCurrentUsername.setText(currentManager.getUsername()
-        );
+        tbxEditManagerCurrentUsername.setEditable(false);
+        tbxEditManagerCurrentUsername.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblCurrentUsername1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblCurrentUsername1.setText("Current Username:");
-        lblCurrentUsername1.setToolTipText("");
-        lblCurrentUsername1.setPreferredSize(new java.awt.Dimension(200, 50));
+        lblEditManagerCurrentUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblEditManagerCurrentUsername.setText("Current Username:");
+        lblEditManagerCurrentUsername.setToolTipText("");
+        lblEditManagerCurrentUsername.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblNewPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNewPassword.setText("New Password:");
-        lblNewPassword.setToolTipText("");
-        lblNewPassword.setPreferredSize(new java.awt.Dimension(200, 50));
+        lblEditManagerNewPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblEditManagerNewPassword.setText("New Password:");
+        lblEditManagerNewPassword.setToolTipText("");
+        lblEditManagerNewPassword.setPreferredSize(new java.awt.Dimension(200, 50));
 
         btnSaveEditManagerAcc.setText("Save");
         btnSaveEditManagerAcc.setPreferredSize(new java.awt.Dimension(200, 50));
@@ -90,16 +91,16 @@ public class EditManagerAccount extends javax.swing.JFrame {
                     .addComponent(btnSaveEditManagerAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCurrentUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblEditManagerNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEditManagerCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEditManagerNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEditManagerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tbxCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tbxCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tbxNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tbxNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tbxEditManagerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tbxEditManagerCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tbxEditManagerNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tbxEditManagerNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,38 +108,35 @@ public class EditManagerAccount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCurrentUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbxCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditManagerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbxEditManagerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbxCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditManagerCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbxEditManagerCurrentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbxNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditManagerNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbxEditManagerNewUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbxNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditManagerNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbxEditManagerNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(btnSaveEditManagerAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(187, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveEditManagerAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditManagerAccActionPerformed
-        String inputtedUsername = tbxNewUsername.getText();
-        String inputtedPassword = tbxNewPassword.getText();
-        Managers editedManager = new Managers();
-        editedManager.setId(currentManager.getId());
-        editedManager.setUsername(inputtedUsername);
-        editedManager.setPassword(inputtedPassword);
+        String inputtedUsername = tbxEditManagerNewUsername.getText();
+        String inputtedPassword = tbxEditManagerNewPassword.getText();
         ManagerController managerController = new ManagerController();
-        managerController.editManagerAcc(editedManager);
-        ManagerDashboard managerDashboard = new ManagerDashboard(currentManager);
+        managerController.editManagerAcc(loggedInManagerId,inputtedUsername,inputtedPassword);
+        ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerId);
         managerDashboard.setVisible(true);
         setVisible(false);
         dispose();
@@ -181,13 +179,13 @@ public class EditManagerAccount extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSaveEditManagerAcc;
-    private javax.swing.JLabel lblCurrentPassword;
-    private javax.swing.JLabel lblCurrentUsername1;
-    private javax.swing.JLabel lblNewPassword;
-    private javax.swing.JLabel lblNewUsername;
-    private javax.swing.JTextField tbxCurrentPassword;
-    private javax.swing.JTextField tbxCurrentUsername;
-    private javax.swing.JTextField tbxNewPassword;
-    private javax.swing.JTextField tbxNewUsername;
+    private javax.swing.JLabel lblEditManagerCurrentPassword;
+    private javax.swing.JLabel lblEditManagerCurrentUsername;
+    private javax.swing.JLabel lblEditManagerNewPassword;
+    private javax.swing.JLabel lblEditManagerNewUsername;
+    private javax.swing.JTextField tbxEditManagerCurrentPassword;
+    private javax.swing.JTextField tbxEditManagerCurrentUsername;
+    private javax.swing.JTextField tbxEditManagerNewPassword;
+    private javax.swing.JTextField tbxEditManagerNewUsername;
     // End of variables declaration//GEN-END:variables
 }

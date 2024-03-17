@@ -6,6 +6,8 @@
 package controller;
 
 import models.Managers;
+import models.Technicians;
+import models.Customers;
 import java.util.ArrayList;
 import view.ManagerDashboard;
 import view.Login;
@@ -32,10 +34,50 @@ public class LoginController {
             {
                 return true;
             }
-            else
+            
+            return false;
+        }
+        
+        
+        return false;
+    }
+    
+    public boolean isTechnicianLoginDetailsMatch(String username,String password)
+    {
+        Technicians technician = new Technicians();
+        ArrayList<Technicians> allTechnicians = technician.getAllTechnicianList();
+        for(int x = 0;x < allTechnicians.size();x++)
+        {
+            boolean isUsernameMatch = allTechnicians.get(x).getUsername().equals(username);
+            boolean isPasswordMatch = allTechnicians.get(x).getPassword().equals(password);
+            
+            if(isUsernameMatch && isPasswordMatch)
             {
-                System.out.println("Login failed");
+                return true;
             }
+            
+            return false;
+        }
+        
+        
+        return false;
+    }
+    
+    public boolean isCustomerLoginDetailsMatch(String username,String password)
+    {
+        Customers customers = new Customers();
+        ArrayList<Customers> allCustomers = customers.getAllCustomerList();
+        for(int x = 0;x < allCustomers.size();x++)
+        {
+            boolean isUsernameMatch = allCustomers.get(x).getUsername().equals(username);
+            boolean isPasswordMatch = allCustomers.get(x).getPassword().equals(password);
+            
+            if(isUsernameMatch && isPasswordMatch)
+            {
+                return true;
+            }
+            
+            return false;
         }
         
         
@@ -45,12 +87,22 @@ public class LoginController {
     public void userLogIn(String username,String password,Login login)
     {
         Managers manager = new Managers(username,password);
+        Customers customer = new Customers(username,password);
+        Technicians technician = new Technicians(username,password);
         if(manager.getId() != 0)
         {
-            ManagerDashboard managerDashboard = new ManagerDashboard(manager);
+            ManagerDashboard managerDashboard = new ManagerDashboard(manager.getId());
             login.setVisible(false);
             login.dispose();
             managerDashboard.setVisible(true);
+        }
+        else if(technician.getId() != 0)
+        {
+            System.out.println("technician");
+        }
+        else if(customer.getId() != 0)
+        {
+            System.out.println("customer");
         }
         else
         {
