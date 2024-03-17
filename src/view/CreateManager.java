@@ -102,7 +102,7 @@ public class CreateManager extends javax.swing.JFrame {
         String inputtedUsername = tbxCreateManagerUsername.getText();
         String inputtedPwd = tbxCreateManagerPwd.getText();
         ManagerController managerController = new ManagerController();
-        managerController.CreateManager(inputtedUsername, inputtedPwd);
+        managerController.createManager(inputtedUsername, inputtedPwd);
     }//GEN-LAST:event_btnCreateManagerCreateActionPerformed
 
     /**

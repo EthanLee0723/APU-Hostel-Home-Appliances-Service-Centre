@@ -1,26 +1,28 @@
 package models;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import java.io.*;  
-import java.util.Scanner;
-import java.util.ArrayList;
-
 /**
  *
  * @author User
  */
-public class Managers{
-    private File file = new File("src/database/Managers.txt");
+public class Customers {
+    private File file = new File("src/database/Customers.txt");
     private int id;
     private String username;
     private String password;
     
-    public Managers()
+    public Customers()
     {
         if(!isFileExists())
         {
@@ -28,54 +30,54 @@ public class Managers{
         }
     }
     
-    public Managers(String username)
+    public Customers(String username)
     {
-        ArrayList<Managers> allManagers = getAllManagerList();
-        Managers managerDetails = new Managers();
-        for(int x = 0;x < allManagers.size();x++)
+        ArrayList<Customers> allCustomers = getAllCustomerList();
+        Customers customerDetails = new Customers();
+        for(int x = 0;x < allCustomers.size();x++)
         {
-            if(allManagers.get(x).getUsername().equals(username))
+            if(allCustomers.get(x).getUsername().equals(username))
             {
-                setId(allManagers.get(x).getId());
-                setUsername(allManagers.get(x).getUsername());
-                setPassword(allManagers.get(x).getPassword());
+                setId(allCustomers.get(x).getId());
+                setUsername(allCustomers.get(x).getUsername());
+                setPassword(allCustomers.get(x).getPassword());
                 break;
             }
         }
     }
     
-    public Managers(int managerId)
+    public Customers(int customerId)
     {
-        ArrayList<Managers> allManagers = getAllManagerList();
-        for(int x = 0;x < allManagers.size();x++)
+        ArrayList<Customers> allCustomers = getAllCustomerList();
+        for(int x = 0;x < allCustomers.size();x++)
         {
-            if(allManagers.get(x).getId() == managerId)
+            if(allCustomers.get(x).getId() == customerId)
             {
-                setId(allManagers.get(x).getId());
-                setUsername(allManagers.get(x).getUsername());
-                setPassword(allManagers.get(x).getPassword());
+                setId(allCustomers.get(x).getId());
+                setUsername(allCustomers.get(x).getUsername());
+                setPassword(allCustomers.get(x).getPassword());
                 break;
             }
         }
     }
     
-    public Managers(String username,String password)
+    public Customers(String username,String password)
     {
-        ArrayList<Managers> allManagers = getAllManagerList();
-        Managers managerDetails = new Managers();
-        for(int x = 0;x < allManagers.size();x++)
+        ArrayList<Customers> allCustomers = getAllCustomerList();
+        Customers customerDetails = new Customers();
+        for(int x = 0;x < allCustomers.size();x++)
         {
-            if(allManagers.get(x).getUsername().equals(username) && allManagers.get(x).getPassword().equals(password))
+            if(allCustomers.get(x).getUsername().equals(username) && allCustomers.get(x).getPassword().equals(password))
             {
-                setId(allManagers.get(x).getId());
-                setUsername(allManagers.get(x).getUsername());
-                setPassword(allManagers.get(x).getPassword());
+                setId(allCustomers.get(x).getId());
+                setUsername(allCustomers.get(x).getUsername());
+                setPassword(allCustomers.get(x).getPassword());
                 break;
             }
         }
     }
     
-    public Managers(int newId,String newUsername,String newPassword)
+    public Customers(int newId,String newUsername,String newPassword)
     {
         setId(newId);
         setUsername(newUsername);
@@ -128,8 +130,8 @@ public class Managers{
                }
                else
                {
-                   Managers managerDetails = new Managers(Integer.parseInt(inputFile.nextLine()),inputFile.nextLine(),inputFile.nextLine());
-                   readFile.add(managerDetails);
+                   Customers customerDetails = new Customers(Integer.parseInt(inputFile.nextLine()),inputFile.nextLine(),inputFile.nextLine());
+                   readFile.add(customerDetails);
                }
            }
            inputFile.close();
@@ -141,16 +143,16 @@ public class Managers{
         return readFile;
     }
     
-    public ArrayList<Managers> getAllManagerList()
+    public ArrayList<Customers> getAllCustomerList()
     {
         ArrayList<Object> readFile = readFile();
-        ArrayList<Managers> allManagers = new ArrayList<Managers>();
+        ArrayList<Customers> allCustomers = new ArrayList<Customers>();
         for(int x = 1;x < readFile.size();x++)
         {
-            Managers managerDetails = (Managers) readFile.get(x);
-            allManagers.add(managerDetails);
+            Customers customerDetails = (Customers) readFile.get(x);
+            allCustomers.add(customerDetails);
         }
-        return allManagers;
+        return allCustomers;
     }
     
     
@@ -159,12 +161,8 @@ public class Managers{
     {
         try
         {
-            String defaultData [] = {"1","1","admin","admin123"};
             PrintWriter outputFile = new PrintWriter(file);
-            for(int x = 0;x < defaultData.length;x++)
-            {
-                outputFile.println(defaultData[x]);
-            }
+            outputFile.println("0");
             outputFile.close();
         }
         catch(Exception e)
@@ -177,7 +175,6 @@ public class Managers{
     {
         try
         {
-            File file = new File("src/database/Managers.txt");
             Scanner inputFile = inputFile = new Scanner(file);
         }
         catch(IOException e)
@@ -188,7 +185,7 @@ public class Managers{
         return true;
     }
     
-    public void createNewManager()
+    public void createNewCustomer()
     {
         ArrayList<Object> readFile = readFile();
         try
@@ -199,10 +196,10 @@ public class Managers{
             outputFile.println(latestPrimaryKey);
             for(int x = 1;x < readFile.size();x++)
             {
-                Managers managerDetails = (Managers)readFile.get(x);
-                outputFile.println(managerDetails.getId());
-                outputFile.println(managerDetails.getUsername());
-                outputFile.println(managerDetails.getPassword());
+                Customers customerDetails = (Customers)readFile.get(x);
+                outputFile.println(customerDetails.getId());
+                outputFile.println(customerDetails.getUsername());
+                outputFile.println(customerDetails.getPassword());
             }
             
             outputFile.println(latestPrimaryKey);
@@ -216,7 +213,7 @@ public class Managers{
         }
     }
     
-    public void editManager()
+    public void editCustomer()
     {
         ArrayList<Object> readFile = readFile();
         try
@@ -230,17 +227,17 @@ public class Managers{
                 }
                 else
                 {
-                    Managers managerDetails = (Managers)readFile.get(x);
-                    outputFile.println(managerDetails.getId());
-                    if(managerDetails.getId() == getId())
+                    Customers customerDetails = (Customers)readFile.get(x);
+                    outputFile.println(customerDetails.getId());
+                    if(customerDetails.getId() == getId())
                     {
                         outputFile.println(getUsername());
                         outputFile.println(getPassword());
                     }
                     else
                     {
-                        outputFile.println(managerDetails.getUsername());
-                        outputFile.println(managerDetails.getPassword());
+                        outputFile.println(customerDetails.getUsername());
+                        outputFile.println(customerDetails.getPassword());
                     }
                 }
             }
@@ -252,7 +249,7 @@ public class Managers{
         }
     }
     
-    public Managers getManagerDetails()
+    public Customers getCustomerDetails()
     {
         return this;
     }

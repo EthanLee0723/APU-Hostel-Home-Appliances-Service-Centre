@@ -19,7 +19,11 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
      */
     public EditTechnicianAccount(int technicianId) {
         this.technicianId = technicianId;
+        TechnicianController technicianController = new TechnicianController();
+        HashMap<String, Object> technicianDetails = technicianController.getTechnicianDetails(this.technicianId);
         initComponents();
+        tbxTechnicianCurrentUsername.setText(technicianDetails.get("username").toString());
+        tbxTechnicianCurrentPwd.setText(technicianDetails.get("password").toString());
     }
 
     /**
@@ -127,14 +131,10 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveEditTechnicianAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditTechnicianAccActionPerformed
-//        String inputtedUsername = tbxTechnicianNewUsername.getText();
-//        String inputtedPassword = tbxTechnicianNewPwd.getText();
-//        TechnicianController technicianController = new TechnicianController();
-//        technicianController.editTechnicianAcc(LoggedInTechnicianid,inputtedUsername,inputtedPassword);
-//        ManagerDashboard managerDashboard = new ManagerDashboard(currentTechnician);
-//        managerDashboard.setVisible(true);
-//        setVisible(false);
-//        dispose();
+        String inputtedUsername = tbxTechnicianNewUsername.getText();
+        String inputtedPassword = tbxTechnicianNewPwd.getText();
+        TechnicianController technicianController = new TechnicianController();
+        technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
     }//GEN-LAST:event_btnSaveEditTechnicianAccActionPerformed
 
     /**

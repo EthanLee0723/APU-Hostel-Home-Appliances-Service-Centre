@@ -24,7 +24,7 @@ public class ManagerController {
         return managerDetails;
     }
     
-    public void CreateManager(String newUsername,String newPassword)
+    public void createManager(String newUsername,String newPassword)
     {   
         Managers newManager = new Managers();
         newManager.setUsername(newUsername);

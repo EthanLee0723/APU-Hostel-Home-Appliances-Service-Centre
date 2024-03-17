@@ -3,7 +3,8 @@ package view;
 import view.EditManagerAccount;
 import view.CreateManager;
 import view.Login;
-
+import view.EditTechnicianSelection;
+import view.EditCustomerSelection;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -76,14 +77,29 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
         btnEditTechnicianDetails.setText("Edit Technician Details");
         btnEditTechnicianDetails.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnEditTechnicianDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditTechnicianDetailsActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEditTechnicianDetails);
 
         btnCreateCustomer.setText("Create Customer");
         btnCreateCustomer.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnCreateCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCustomerActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCreateCustomer);
 
         btnEditCustomerDetails.setText("Edit Customer Details");
         btnEditCustomerDetails.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnEditCustomerDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCustomerDetailsActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEditCustomerDetails);
 
         btnManagerLogout.setText("Logout");
@@ -125,6 +141,27 @@ public class ManagerDashboard extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_btnManagerLogoutActionPerformed
+
+    private void btnEditTechnicianDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianDetailsActionPerformed
+        EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection();
+        editTechnicianSelection.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnEditTechnicianDetailsActionPerformed
+
+    private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
+        CreateCustomer createCustomer = new CreateCustomer();
+        createCustomer.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnCreateCustomerActionPerformed
+
+    private void btnEditCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerDetailsActionPerformed
+        EditCustomerSelection editCustomerSelection = new EditCustomerSelection();
+        editCustomerSelection.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
 
     /**
      * @param args the command line arguments

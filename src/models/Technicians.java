@@ -29,6 +29,37 @@ public class Technicians {
         }
     }
     
+    public Technicians(int technicianId)
+    {
+        ArrayList<Technicians> allTechnicians = getAllTechnicianList();
+        for(int x = 0;x < allTechnicians.size();x++)
+        {
+            if(allTechnicians.get(x).getId() == technicianId)
+            {
+                setId(allTechnicians.get(x).getId());
+                setUsername(allTechnicians.get(x).getUsername());
+                setPassword(allTechnicians.get(x).getPassword());
+                break;
+            }
+        }
+    }
+    
+    public Technicians(String username,String password)
+    {
+        ArrayList<Technicians> allTechnicians = getAllTechnicianList();
+        Technicians technicianDetails = new Technicians();
+        for(int x = 0;x < allTechnicians.size();x++)
+        {
+            if(allTechnicians.get(x).getUsername().equals(username) && allTechnicians.get(x).getPassword().equals(password))
+            {
+                setId(allTechnicians.get(x).getId());
+                setUsername(allTechnicians.get(x).getUsername());
+                setPassword(allTechnicians.get(x).getPassword());
+                break;
+            }
+        }
+    }
+    
     public Technicians(int newId,String newUsername,String newPassword)
     {
         setId(newId);
@@ -84,12 +115,8 @@ public class Technicians {
     {
         try
         {
-            String defaultData [] = {"0"};
             PrintWriter outputFile = new PrintWriter(file);
-            for(int x = 0;x < defaultData.length;x++)
-            {
-                outputFile.println(defaultData[x]);
-            }
+            outputFile.println("0");
             outputFile.close();
         }
         catch(Exception e)
@@ -148,6 +175,54 @@ public class Technicians {
             outputFile.println(latestPrimaryKey);
             outputFile.println(getUsername());
             outputFile.println(getPassword());
+            outputFile.close();
+        }
+        catch(IOException e)
+        {
+            
+        }
+    }
+    
+    public ArrayList<Technicians> getAllTechnicianList()
+    {
+        ArrayList<Object> readFile = readFile();
+        ArrayList<Technicians> allTechnicians = new ArrayList<Technicians>();
+        for(int x = 1;x < readFile.size();x++)
+        {
+            Technicians technicianDetails = (Technicians) readFile.get(x);
+            allTechnicians.add(technicianDetails);
+        }
+        return allTechnicians;
+    }
+    
+    public void editTechnician()
+    {
+        ArrayList<Object> readFile = readFile();
+        try
+        {
+            PrintWriter outputFile = new PrintWriter(file);
+            for(int x = 0;x < readFile.size();x++)
+            {
+                if(x == 0)
+                {
+                    outputFile.println(readFile.get(x));
+                }
+                else
+                {
+                    Technicians technicianDetails = (Technicians)readFile.get(x);
+                    outputFile.println(technicianDetails.getId());
+                    if(technicianDetails.getId() == getId())
+                    {
+                        outputFile.println(getUsername());
+                        outputFile.println(getPassword());
+                    }
+                    else
+                    {
+                        outputFile.println(technicianDetails.getUsername());
+                        outputFile.println(technicianDetails.getPassword());
+                    }
+                }
+            }
             outputFile.close();
         }
         catch(IOException e)
