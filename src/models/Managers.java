@@ -188,6 +188,34 @@ public class Managers{
         return true;
     }
     
+    public void createNewManager()
+    {
+        ArrayList<Object> readFile = readFile();
+        try
+        {
+            PrintWriter outputFile = new PrintWriter(file);
+            int latestPrimaryKey =  Integer.parseInt(readFile.get(0).toString());
+            latestPrimaryKey++;
+            outputFile.println(latestPrimaryKey);
+            for(int x = 1;x < readFile.size();x++)
+            {
+                Managers managerDetails = (Managers)readFile.get(x);
+                outputFile.println(managerDetails.getId());
+                outputFile.println(managerDetails.getUsername());
+                outputFile.println(managerDetails.getPassword());
+            }
+            
+            outputFile.println(latestPrimaryKey);
+            outputFile.println(getUsername());
+            outputFile.println(getPassword());
+            outputFile.close();
+        }
+        catch(IOException e)
+        {
+            
+        }
+    }
+    
     public void editManager(Managers editedManager)
     {
         ArrayList<Object> readFile = readFile();

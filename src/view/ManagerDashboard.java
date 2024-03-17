@@ -2,6 +2,9 @@ package view;
 
 import view.EditManagerAccount;
 import models.Managers;
+import view.CreateManager;
+import view.Login;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,15 +35,18 @@ public class ManagerDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         btnEditMyAcc = new javax.swing.JButton();
+        btnCreateManager = new javax.swing.JButton();
         btnCreateTechnician = new javax.swing.JButton();
         btnEditTechnicianDetails = new javax.swing.JButton();
         btnCreateCustomer = new javax.swing.JButton();
         btnEditCustomerDetails = new javax.swing.JButton();
+        btnManagerLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(10, 10, 10, 10));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
         setSize(new java.awt.Dimension(0, 0));
-        getContentPane().setLayout(new java.awt.GridLayout(2, 0));
+        getContentPane().setLayout(new java.awt.GridLayout(3, 3, 10, 10));
 
         btnEditMyAcc.setText("Edit my account");
         btnEditMyAcc.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -50,6 +56,15 @@ public class ManagerDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditMyAcc);
+
+        btnCreateManager.setText("Create Manager");
+        btnCreateManager.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnCreateManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateManagerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCreateManager);
 
         btnCreateTechnician.setText("Create Technician");
         btnCreateTechnician.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -72,11 +87,23 @@ public class ManagerDashboard extends javax.swing.JFrame {
         btnEditCustomerDetails.setPreferredSize(new java.awt.Dimension(200, 200));
         getContentPane().add(btnEditCustomerDetails);
 
+        btnManagerLogout.setText("Logout");
+        btnManagerLogout.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnManagerLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagerLogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnManagerLogout);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
-        // TODO add your handling code here:
+        CreateTechnician createTechnician = new CreateTechnician();
+        createTechnician.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
@@ -85,6 +112,20 @@ public class ManagerDashboard extends javax.swing.JFrame {
         EditManagerAccount editManagerAcc = new EditManagerAccount(currentManager);
         editManagerAcc.setVisible(true);
     }//GEN-LAST:event_btnEditMyAccActionPerformed
+
+    private void btnCreateManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerActionPerformed
+        CreateManager createManager = new CreateManager();
+        createManager.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnCreateManagerActionPerformed
+
+    private void btnManagerLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagerLogoutActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnManagerLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,9 +164,11 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateCustomer;
+    private javax.swing.JButton btnCreateManager;
     private javax.swing.JButton btnCreateTechnician;
     private javax.swing.JButton btnEditCustomerDetails;
     private javax.swing.JButton btnEditMyAcc;
     private javax.swing.JButton btnEditTechnicianDetails;
+    private javax.swing.JButton btnManagerLogout;
     // End of variables declaration//GEN-END:variables
 }

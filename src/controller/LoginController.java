@@ -32,6 +32,10 @@ public class LoginController {
             {
                 return true;
             }
+            else
+            {
+                System.out.println("Login failed");
+            }
         }
         
         

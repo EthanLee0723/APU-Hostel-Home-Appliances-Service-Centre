@@ -6,6 +6,7 @@
 package view;
 import models.Managers;
 import controller.EditManagerAccController;
+import view.ManagerDashboard;
 /**
  *
  * @author User
@@ -137,6 +138,10 @@ public class EditManagerAccount extends javax.swing.JFrame {
         editedManager.setPassword(inputtedPassword);
         EditManagerAccController editManagerAccController = new EditManagerAccController();
         editManagerAccController.editManagerAcc(editedManager);
+        ManagerDashboard managerDashboard = new ManagerDashboard(currentManager);
+        managerDashboard.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnSaveEditManagerAccActionPerformed
 
     /**
