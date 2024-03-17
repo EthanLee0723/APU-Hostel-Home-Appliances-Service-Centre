@@ -94,6 +94,17 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="apptManagementButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Appointment Management"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[200, 200]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="apptManagementButtonActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnManagerLogout">
       <Properties>
         <Property name="text" type="java.lang.String" value="Logout"/>
