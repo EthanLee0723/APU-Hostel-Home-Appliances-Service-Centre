@@ -7,7 +7,7 @@ package controller.Appt;
 
 import javax.swing.*;
 import models.Appt;
-import service.ApptService;
+import controller.ApptServiceController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class AddApt extends javax.swing.JFrame {
 
-    private final ApptService apptService; 
+    private final ApptServiceController apptService; 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
     /**
@@ -29,7 +29,7 @@ public class AddApt extends javax.swing.JFrame {
      */
     public AddApt() {
         initComponents();
-        this.apptService = new ApptService();
+        this.apptService = new ApptServiceController();
     }
 
     /**

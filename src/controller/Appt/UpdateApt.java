@@ -7,7 +7,7 @@ package controller.Appt;
 
 import javax.swing.*;
 import models.Appt;
-import service.ApptService;
+import controller.ApptServiceController;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class UpdateApt extends javax.swing.JFrame {
 
-    private final ApptService apptService;
+    private final ApptServiceController apptService;
     private static Map<String, String[]> detailsMap = new HashMap<>();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -32,7 +32,7 @@ public class UpdateApt extends javax.swing.JFrame {
      */
     public UpdateApt() {
         initComponents();
-        this.apptService = new ApptService();
+        this.apptService = new ApptServiceController();
         performFileRelatedTask();
     }
 

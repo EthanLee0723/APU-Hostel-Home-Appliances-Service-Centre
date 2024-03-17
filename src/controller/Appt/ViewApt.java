@@ -6,16 +6,16 @@
 package controller.Appt;
 
 import java.awt.event.ActionEvent;
-import service.ApptService;
+import controller.ApptServiceController;
 import javax.swing.table.DefaultTableModel;
 
 public class ViewApt extends javax.swing.JFrame {
 
-    private final ApptService apptService;
+    private final ApptServiceController apptService;
 
     public ViewApt() {
         initComponents();
-        this.apptService = new ApptService();
+        this.apptService = new ApptServiceController();
         performFileRelatedTask();
     }
 

@@ -7,19 +7,19 @@ package controller.Appt;
 
 
 import javax.swing.JOptionPane;
-import service.ApptService;
+import controller.ApptServiceController;
 import javax.swing.table.DefaultTableModel;
 
 
 public class DeleteApt extends javax.swing.JFrame {
 
-    private final ApptService apptService;
+    private final ApptServiceController apptService;
     /**
      * Creates new form DeleteApt
      */
     public DeleteApt() {
         initComponents();
-        this.apptService = new ApptService();
+        this.apptService = new ApptServiceController();
         performFileRelatedTask();
     }
 

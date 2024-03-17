@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,13 +19,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import controller.Appt.UpdateApt;
 import models.Appt;
+import controller.ApptServiceController;
 /**
  *
  * @author GENJI
  */
-public class ApptService {
-    
-    public ApptService() {
+public class ApptServiceController {
+    public ApptServiceController() {
     }
 
     public List<Appt> getAll() {
@@ -42,7 +42,7 @@ public class ApptService {
                 appts.add(appt);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return appts;
     }
@@ -61,7 +61,7 @@ public class ApptService {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("storage/appointment.txt", true))) {
             pw.println(appt.getName() + "," + appt.getDate() + "," + appt.getTime()+ "," + appt.getServiceType()+ "," + appt.getAmount()+ "," + appt.getPaymentStatus()+ "," + appt.getTechnician()+ "," + appt.getCustomerName()+ "," + appt.getFeedback());
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -88,7 +88,7 @@ public class ApptService {
             // Delete the entire file
             Files.delete(Paths.get("storage/appointment.txt"));
         } catch (IOException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Create a new file and write new data into the file
@@ -97,7 +97,7 @@ public class ApptService {
                 pw.println(appt.getName() + "," + appt.getDate() + "," + appt.getTime()+ "," + appt.getServiceType()+ "," + appt.getAmount()+ "," + appt.getPaymentStatus()+ "," + appt.getTechnician()+ "," + appt.getCustomerName()+ "," + appt.getFeedback());
             });
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return true;
@@ -170,7 +170,7 @@ public class ApptService {
         try {
             Files.delete(Paths.get("storage/appointment.txt"));
         } catch (IOException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("storage/appointment.txt"))) {
@@ -178,7 +178,7 @@ public class ApptService {
                 pw.println(appt.getName() + "," + appt.getDate() + "," + appt.getTime()+ "," + appt.getServiceType()+ "," + appt.getAmount()+ "," + appt.getPaymentStatus()+ "," + appt.getTechnician()+ "," + appt.getCustomerName()+ "," + appt.getFeedback());
             });
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ApptService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ApptServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
