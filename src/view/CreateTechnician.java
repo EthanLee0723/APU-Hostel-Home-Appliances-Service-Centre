@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import controller.CreateTechnicianController;
+import controller.TechnicianController;
 /**
  *
  * @author User
@@ -101,8 +101,8 @@ public class CreateTechnician extends javax.swing.JFrame {
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
         String inputtedUsername =  tbxCreateTechnicianUsername.getText();
         String inputtedPassword = tbxCreateTechnicianPwd.getText();
-        CreateTechnicianController createTechnicianController = new CreateTechnicianController();
-        createTechnicianController.createNewTechnician(inputtedUsername, inputtedPassword);
+        TechnicianController technicianController = new TechnicianController();
+        technicianController.createNewTechnician(inputtedUsername, inputtedPassword);
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
     /**

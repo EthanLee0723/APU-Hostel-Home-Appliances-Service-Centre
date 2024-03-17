@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import controller.CreateManagerController;
+import controller.ManagerController;
 /**
  *
  * @author User
@@ -101,8 +101,8 @@ public class CreateManager extends javax.swing.JFrame {
     private void btnCreateManagerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerCreateActionPerformed
         String inputtedUsername = tbxCreateManagerUsername.getText();
         String inputtedPwd = tbxCreateManagerPwd.getText();
-        CreateManagerController createManagerController = new CreateManagerController();
-        createManagerController.CreateManager(inputtedUsername, inputtedPwd);
+        ManagerController managerController = new ManagerController();
+        managerController.CreateManager(inputtedUsername, inputtedPwd);
     }//GEN-LAST:event_btnCreateManagerCreateActionPerformed
 
     /**

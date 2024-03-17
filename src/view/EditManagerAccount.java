@@ -5,7 +5,7 @@
  */
 package view;
 import models.Managers;
-import controller.EditManagerAccController;
+import controller.ManagerController;
 import view.ManagerDashboard;
 /**
  *
@@ -136,8 +136,8 @@ public class EditManagerAccount extends javax.swing.JFrame {
         editedManager.setId(currentManager.getId());
         editedManager.setUsername(inputtedUsername);
         editedManager.setPassword(inputtedPassword);
-        EditManagerAccController editManagerAccController = new EditManagerAccController();
-        editManagerAccController.editManagerAcc(editedManager);
+        ManagerController managerController = new ManagerController();
+        managerController.editManagerAcc(editedManager);
         ManagerDashboard managerDashboard = new ManagerDashboard(currentManager);
         managerDashboard.setVisible(true);
         setVisible(false);
