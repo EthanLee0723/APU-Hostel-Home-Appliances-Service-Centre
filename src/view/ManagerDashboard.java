@@ -44,21 +44,19 @@ public class ManagerDashboard extends javax.swing.JFrame {
         btnEditCustomerDetails = new javax.swing.JButton();
         apptManagementButton = new javax.swing.JButton();
         btnManagerLogout = new javax.swing.JButton();
+        lblLoginUsername1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(10, 10, 10, 10));
-        setPreferredSize(new java.awt.Dimension(1000, 800));
         setSize(new java.awt.Dimension(0, 0));
-        getContentPane().setLayout(new java.awt.GridLayout(3, 3, 10, 10));
 
-        btnEditMyAcc.setText("Edit my account");
+        btnEditMyAcc.setText("Edit Manager Account");
         btnEditMyAcc.setPreferredSize(new java.awt.Dimension(200, 200));
         btnEditMyAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditMyAccActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditMyAcc);
 
         btnCreateManager.setText("Create Manager");
         btnCreateManager.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -67,7 +65,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnCreateManagerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateManager);
 
         btnCreateTechnician.setText("Create Technician");
         btnCreateTechnician.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -76,7 +73,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnCreateTechnicianActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateTechnician);
 
         btnEditTechnicianDetails.setText("Edit Technician Details");
         btnEditTechnicianDetails.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -85,7 +81,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnEditTechnicianDetailsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditTechnicianDetails);
 
         btnCreateCustomer.setText("Create Customer");
         btnCreateCustomer.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -94,7 +89,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnCreateCustomerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateCustomer);
 
         btnEditCustomerDetails.setText("Edit Customer Details");
         btnEditCustomerDetails.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -103,7 +97,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnEditCustomerDetailsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditCustomerDetails);
 
         apptManagementButton.setText("Appointment Management");
         apptManagementButton.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -112,7 +105,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 apptManagementButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(apptManagementButton);
 
         btnManagerLogout.setText("Logout");
         btnManagerLogout.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -121,31 +113,71 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnManagerLogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(btnManagerLogout);
+
+        lblLoginUsername1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblLoginUsername1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblLoginUsername1.setText("APU Hostel Home Appliances Service Centre ");
+        lblLoginUsername1.setAlignmentY(0.0F);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLoginUsername1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCreateManager, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCreateTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCreateCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEditTechnicianDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEditMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEditCustomerDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(apptManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(btnManagerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateCustomer, btnCreateManager, btnCreateTechnician, btnEditCustomerDetails, btnEditMyAcc, btnEditTechnicianDetails});
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblLoginUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreateManager, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreateTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditTechnicianDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreateCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditCustomerDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(apptManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(btnManagerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {apptManagementButton, btnCreateCustomer, btnCreateManager, btnCreateTechnician, btnEditCustomerDetails, btnEditMyAcc, btnEditTechnicianDetails});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
-        CreateTechnician createTechnician = new CreateTechnician();
-        createTechnician.setVisible(true);
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_btnCreateTechnicianActionPerformed
-
-    private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
-        setVisible(false);
-        dispose();
-        EditManagerAccount editManagerAcc = new EditManagerAccount(loggedInManagerid);
-        editManagerAcc.setVisible(true);
-    }//GEN-LAST:event_btnEditMyAccActionPerformed
-
-    private void btnCreateManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerActionPerformed
-        CreateManager createManager = new CreateManager();
-        createManager.setVisible(true);
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_btnCreateManagerActionPerformed
 
     private void btnManagerLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagerLogoutActionPerformed
         Login login = new Login();
@@ -154,12 +186,18 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnManagerLogoutActionPerformed
 
-    private void btnEditTechnicianDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianDetailsActionPerformed
-        EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection();
-        editTechnicianSelection.setVisible(true);
+    private void apptManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptManagementButtonActionPerformed
+        ApptManagement im = new ApptManagement();
+        im.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_apptManagementButtonActionPerformed
+
+    private void btnEditCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerDetailsActionPerformed
+        EditCustomerSelection editCustomerSelection = new EditCustomerSelection();
+        editCustomerSelection.setVisible(true);
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_btnEditTechnicianDetailsActionPerformed
+    }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
 
     private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
         CreateCustomer createCustomer = new CreateCustomer();
@@ -168,17 +206,33 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
 
-    private void btnEditCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerDetailsActionPerformed
-        EditCustomerSelection editCustomerSelection = new EditCustomerSelection();
-        editCustomerSelection.setVisible(true);
+    private void btnEditTechnicianDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianDetailsActionPerformed
+        EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection();
+        editTechnicianSelection.setVisible(true);
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
-    private void apptManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptManagementButtonActionPerformed
-        ApptManagement im = new ApptManagement();
-        im.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_apptManagementButtonActionPerformed
+    }//GEN-LAST:event_btnEditTechnicianDetailsActionPerformed
+
+    private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
+        CreateTechnician createTechnician = new CreateTechnician();
+        createTechnician.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnCreateTechnicianActionPerformed
+
+    private void btnCreateManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerActionPerformed
+        CreateManager createManager = new CreateManager(loggedInManagerid);
+        createManager.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnCreateManagerActionPerformed
+
+    private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
+        setVisible(false);
+        dispose();
+        EditManagerAccount editManagerAcc = new EditManagerAccount(loggedInManagerid);
+        editManagerAcc.setVisible(true);
+    }//GEN-LAST:event_btnEditMyAccActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,5 +278,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnEditMyAcc;
     private javax.swing.JButton btnEditTechnicianDetails;
     private javax.swing.JButton btnManagerLogout;
+    private javax.swing.JLabel lblLoginUsername1;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,6 +31,7 @@ import view.BillingManagement;
 import view.ViewAppoinment;
 import view.FeedbackAppointment;
 import view.EditTechnicianAccount;
+import view.Login;
 
 public class TechnicianDashboard extends javax.swing.JFrame {
     private int loggedTechID;
@@ -60,8 +61,6 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(239, 224, 90));
 
         btnEditMyAccActionPerformed.setText("View/Edit Profile");
         btnEditMyAccActionPerformed.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +206,9 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3AncestorAdded
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        Login vd = new Login();
+        vd.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

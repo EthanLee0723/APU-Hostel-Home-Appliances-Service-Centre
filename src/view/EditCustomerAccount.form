@@ -23,56 +23,71 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnSaveEditCustomerAcc" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblCustomerNewPwd" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblCustomerCurrentPwd" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblCustomerNewUsername" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblCustomerCurrentUsername" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tbxCustomerCurrentUsername" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxCustomerCurrentPwd" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxCustomerNewPwd" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxCustomerNewUsername" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                          <Component id="btnSaveEditCustomerAcc" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblCustomerNewPwd" linkSize="5" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="lblCustomerCurrentPwd" linkSize="5" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="lblCustomerNewUsername" linkSize="5" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="lblCustomerCurrentUsername" linkSize="5" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tbxCustomerNewPwd" linkSize="5" pref="214" max="32767" attributes="0"/>
+                                  <Component id="tbxCustomerNewUsername" linkSize="5" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tbxCustomerCurrentUsername" linkSize="5" max="32767" attributes="0"/>
+                                  <Component id="tbxCustomerCurrentPwd" linkSize="5" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="329" max="-2" attributes="0"/>
+                      <Component id="lblLoginUsername1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="269" max="32767" attributes="0"/>
+              <EmptySpace pref="268" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="247" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCustomerCurrentUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxCustomerCurrentUsername" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+              <Component id="lblLoginUsername1" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblCustomerCurrentUsername" linkSize="6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="tbxCustomerCurrentUsername" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCustomerCurrentPwd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxCustomerCurrentPwd" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="lblCustomerCurrentPwd" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tbxCustomerCurrentPwd" linkSize="6" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCustomerNewUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxCustomerNewUsername" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="tbxCustomerNewUsername" linkSize="6" pref="47" max="32767" attributes="0"/>
+                  <Component id="lblCustomerNewUsername" linkSize="6" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCustomerNewPwd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxCustomerNewPwd" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="lblCustomerNewPwd" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tbxCustomerNewPwd" linkSize="6" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="btnSaveEditCustomerAcc" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+              <EmptySpace pref="199" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,6 +170,16 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLoginUsername1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="24" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="11"/>
+        <Property name="text" type="java.lang.String" value="EDIT CUSTOMER PROFILE"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
       </Properties>
     </Component>
   </SubComponents>
