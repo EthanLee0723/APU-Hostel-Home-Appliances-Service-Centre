@@ -5,12 +5,14 @@
  */
 package controller.Appt;
 
+import view.ManagerDashboard;
+
 /**
  *
  * @author GENJI
  */
 public class ApptManagement extends javax.swing.JFrame {
-
+    private int loggedInManagerid;
     /**
      * Creates new form ApptManagement
      */
@@ -37,10 +39,9 @@ public class ApptManagement extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(211, 211, 211));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         addButton.setText("Add Appointment");
@@ -175,7 +176,10 @@ public class ApptManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyButtonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        ManagerDashboard md = new ManagerDashboard(loggedInManagerid);
+        md.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

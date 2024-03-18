@@ -79,12 +79,9 @@ public class BillingManagement extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(239, 224, 90));
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("PAYMENT");
 
-        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setText("Name :");
@@ -362,6 +359,25 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
     }
+    private void APPTNAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APPTNAMEFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_APPTNAMEFIELDActionPerformed
+
+    private void NAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NAMEFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NAMEFIELDActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        TechnicianDashboard td = new TechnicianDashboard(loggedTechID);
+        td.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void AMOUNTFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMOUNTFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AMOUNTFIELDActionPerformed
+
     private void comfirmpaymentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmpaymentbuttonActionPerformed
         TechnicianController managerController = new TechnicianController();
         HashMap<String, Object> techDeatils = managerController.getTechnicianDetails(loggedTechID);
@@ -382,12 +398,11 @@ public class BillingManagement extends javax.swing.JFrame {
         //Appointment
 //        String paymentStatus = "active";
 
-
         if(appt_name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Appointment Name cannot be empty");
             return;
         }
-        
+
         if(date.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Date cannot be empty");
             return;
@@ -463,22 +478,42 @@ public class BillingManagement extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Billing has been added");
     }//GEN-LAST:event_comfirmpaymentbuttonActionPerformed
 
-    private void AMOUNTFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMOUNTFIELDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AMOUNTFIELDActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void NAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NAMEFIELDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NAMEFIELDActionPerformed
-
-    private void APPTNAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APPTNAMEFIELDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_APPTNAMEFIELDActionPerformed
-
+    private void performFileRelatedTask() {
+        APPTNAMEFIELD.removeAllItems();
+        APPTNAMEFIELD.addItem("");
+        String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name", "Feedback"};
+         // Create DefaultTableModel with column names
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        
+        apptService.getAll().forEach((appt) -> {
+            model.addRow(new Object[]{
+                appt.getName(),
+                appt.getDate(),
+                appt.getTime(),
+                appt.getServiceType(),
+                appt.getAmount(),
+                appt.getPaymentStatus(),
+                appt.getTechnician(),
+                appt.getCustomerName(),
+                appt.getFeedback()
+            });
+        });
+        
+        try {
+            // Read all lines from the file into a list
+            for (String line : Files.readAllLines(Paths.get("storage/appointment.txt"))) {
+                String[] parts = line.split(",");
+                if (parts.length > 0) {
+                    String name = parts[0];
+                    APPTNAMEFIELD.addItem(name);
+                    detailsMap.put(name, parts);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log the error
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */

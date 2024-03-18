@@ -76,12 +76,10 @@ public class UpdateApt extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(145, 255, 167));
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Update Appointment");
 
-        jPanel3.setBackground(new java.awt.Color(255, 165, 0));
+        jPanel3.setBackground(new java.awt.Color(211, 211, 211));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         mServiceType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Room Cleaning", "Bed Linen Change", "Breakfast", "Laundry", "Tour Guide" }));

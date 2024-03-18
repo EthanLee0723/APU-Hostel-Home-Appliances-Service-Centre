@@ -23,56 +23,70 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnSaveEditTechnicianAcc" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblTechnicianNewPwd" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblTechnicianCurrentPwd" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblTechnicianNewUsername" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="lblTechnicianCurrentUsername" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
+                      <Component id="lblLoginUsername1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTechnicianCurrentUsername" linkSize="1" min="-2" pref="226" max="-2" attributes="0"/>
+                          <Component id="lblTechnicianCurrentPwd" linkSize="1" min="-2" pref="226" max="-2" attributes="0"/>
+                          <Component id="lblTechnicianNewUsername" linkSize="1" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="lblTechnicianNewPwd" linkSize="1" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tbxTechnicianCurrentUsername" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxTechnicianCurrentPwd" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxTechnicianNewPwd" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
-                          <Component id="tbxTechnicianNewUsername" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="tbxTechnicianCurrentPwd" linkSize="1" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="tbxTechnicianNewPwd" linkSize="1" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="tbxTechnicianNewUsername" linkSize="1" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="btnSaveEditTechnicianAcc" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tbxTechnicianCurrentUsername" linkSize="1" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="back" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="269" max="32767" attributes="0"/>
+              <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="247" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTechnicianCurrentUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxTechnicianCurrentUsername" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace pref="138" max="32767" attributes="0"/>
+              <Component id="lblLoginUsername1" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="tbxTechnicianCurrentUsername" linkSize="2" max="32767" attributes="0"/>
+                  <Component id="lblTechnicianCurrentUsername" linkSize="2" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTechnicianCurrentPwd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxTechnicianCurrentPwd" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTechnicianNewUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxTechnicianNewUsername" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="lblTechnicianCurrentPwd" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="tbxTechnicianCurrentPwd" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTechnicianNewPwd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbxTechnicianNewPwd" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="lblTechnicianNewUsername" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="tbxTechnicianNewUsername" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="btnSaveEditTechnicianAcc" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTechnicianNewPwd" linkSize="2" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="tbxTechnicianNewPwd" linkSize="2" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="btnSaveEditTechnicianAcc" linkSize="2" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <Component id="back" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,6 +169,24 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveEditTechnicianAccActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLoginUsername1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="24" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="11"/>
+        <Property name="text" type="java.lang.String" value="EDIT TECHNICIAN PROFILE"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="back">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="BACK"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -30,6 +30,8 @@ import javax.swing.JButton;
 import view.BillingManagement;
 import view.ViewAppoinment;
 import view.FeedbackAppointment;
+import view.EditTechnicianAccount;
+import view.Login;
 
 public class TechnicianDashboard extends javax.swing.JFrame {
     private int loggedTechID;
@@ -51,7 +53,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnEditMyAccActionPerformed = new javax.swing.JButton();
         appoinmentViewButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         viewFeedback = new javax.swing.JButton();
@@ -60,12 +62,10 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(239, 224, 90));
-
-        jButton1.setText("View/Edit Profile");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditMyAccActionPerformed.setText("View/Edit Profile");
+        btnEditMyAccActionPerformed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditMyAccActionPerformedActionPerformed(evt);
             }
         });
 
@@ -117,7 +117,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditMyAccActionPerformed, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(viewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,7 +136,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                         .addGap(234, 234, 234))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, viewFeedback});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, btnEditMyAccActionPerformed, viewFeedback});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +146,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditMyAccActionPerformed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +156,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
                 .addContainerGap(183, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, jButton1, viewFeedback});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BillingButton, appoinmentViewButton, btnEditMyAccActionPerformed, viewFeedback});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,14 +178,17 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BillingButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void btnEditMyAccActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformedActionPerformed
+        setVisible(false);
+        dispose();
+        EditTechnicianAccount editTechnicianAcc = new EditTechnicianAccount(loggedTechID);
+        editTechnicianAcc.setVisible(true);
     }
 
     private void showProfileDialog(String option) {
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEditMyAccActionPerformedActionPerformed
 
     private void appoinmentViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appoinmentViewButtonActionPerformed
          setVisible(false);
@@ -203,7 +206,9 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3AncestorAdded
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        Login vd = new Login();
+        vd.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -253,7 +258,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BillingButton;
     private javax.swing.JButton appoinmentViewButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEditMyAccActionPerformed;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
