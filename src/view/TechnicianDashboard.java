@@ -173,7 +173,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillingButtonActionPerformed
-        BillingManagement vd = new BillingManagement();
+        BillingManagement vd = new BillingManagement(loggedTechID);
         vd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BillingButtonActionPerformed

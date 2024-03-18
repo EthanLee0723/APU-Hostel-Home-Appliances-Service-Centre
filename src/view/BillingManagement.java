@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.*;
 import models.Biling;
 import controller.BillingServiceController;
+import controller.TechnicianController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -25,20 +26,22 @@ import models.Appt;
  * @author GENJI
  */
 public class BillingManagement extends javax.swing.JFrame {
-
+    
     private final BillingServiceController bilingService;
     private final ApptServiceController apptService;
     private static Map<String, String[]> detailsMap = new HashMap<>();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    private int loggedTechID;
     /**
      * Creates new form BillingManagement
      */
-    public BillingManagement() {
+    public BillingManagement(int techid) {
         initComponents();
         this.bilingService = new BillingServiceController();
         this.apptService = new ApptServiceController();
-        performFileRelatedTask();
+        performFileRelatedTask(techid);
+        jPanel2.setVisible(false);
     }
 
     /**
@@ -67,6 +70,12 @@ public class BillingManagement extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         NAMEFIELD = new javax.swing.JTextField();
         APPTNAMEFIELD = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        mTime = new javax.swing.JTextField();
+        mTechnician = new javax.swing.JTextField();
+        mServiceType = new javax.swing.JComboBox<>();
+        mCustomerName = new javax.swing.JTextField();
+        mFeedback = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +132,48 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
+        mTime.setBackground(new java.awt.Color(204, 204, 204));
+        mTime.setForeground(new java.awt.Color(204, 204, 204));
+        mTime.setCaretColor(new java.awt.Color(204, 204, 204));
+        mTime.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        mTime.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+
+        mServiceType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Room Cleaning", "Bed Linen Change", "Breakfast", "Laundry", "Tour Guide" }));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(mTime, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mServiceType, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(mCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(mFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mServiceType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -153,11 +204,15 @@ public class BillingManagement extends javax.swing.JFrame {
                                     .addComponent(NAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comfirmpaymentbutton)
                         .addGap(39, 39, 39))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {AMOUNTFIELD, APPTNAMEFIELD, BANKNAMEFIELD, DATEFIELD, NAMEFIELD, RECIPIENTFIELD, jLabel10, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8});
@@ -182,7 +237,7 @@ public class BillingManagement extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BANKNAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,7 +248,9 @@ public class BillingManagement extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comfirmpaymentbutton)
                     .addComponent(backButton))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMOUNTFIELD, APPTNAMEFIELD, BANKNAMEFIELD, DATEFIELD, NAMEFIELD, RECIPIENTFIELD, jLabel10, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8});
@@ -236,7 +293,10 @@ public class BillingManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void performFileRelatedTask() {
+    private void performFileRelatedTask(int techid) {
+        loggedTechID = techid;
+        TechnicianController managerController = new TechnicianController();
+        HashMap<String, Object> techDeatils = managerController.getTechnicianDetails(loggedTechID);
         APPTNAMEFIELD.removeAllItems();
         APPTNAMEFIELD.addItem("");
         String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name", "Feedback"};
@@ -263,17 +323,48 @@ public class BillingManagement extends javax.swing.JFrame {
                 String[] parts = line.split(",");
                 if (parts.length > 0) {
                     String name = parts[0];
-                    APPTNAMEFIELD.addItem(name);
-                    detailsMap.put(name, parts);
+                    String techname = parts[6];
+                    String paymentStatus = parts[5];
+                    if(techname.equals(techDeatils.get("username").toString()) && !paymentStatus.equals("Success")){
+                       APPTNAMEFIELD.addItem(name);
+                       detailsMap.put(name, parts);
+                    }                                    
                 }
             }
         } catch (IOException e) {
             e.printStackTrace(); // Handle or log the error
         }
         
+        APPTNAMEFIELD.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JComboBox<String> source = (JComboBox<String>) e.getSource();
+                String selectedName = (String) source.getSelectedItem();
+                if (selectedName != null) {
+                    // Retrieve details from the map based on the selected name
+                    String[] details = detailsMap.get(selectedName);
+                    if (details != null) {
+                        // Auto-fill other text fields                 
+                        DATEFIELD.setText(details[1]);  
+                        AMOUNTFIELD.setText(details[4]);
+                        
+                         
+                        mTime.setText(details[2]); 
+                        mServiceType.setSelectedItem(details[3]);                       
+                        mTechnician.setText(details[6]); 
+                        mCustomerName.setText(details[7]); 
+                        mFeedback.setText(details[8]);
+                        
+                        
+                        
+                    }
+                }
+            }
+        });
     }
     private void comfirmpaymentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmpaymentbuttonActionPerformed
-
+        TechnicianController managerController = new TechnicianController();
+        HashMap<String, Object> techDeatils = managerController.getTechnicianDetails(loggedTechID);
         String appt_name = APPTNAMEFIELD.getSelectedItem().toString();
         String date = DATEFIELD.getText();
         String amount = AMOUNTFIELD.getText();
@@ -281,9 +372,15 @@ public class BillingManagement extends javax.swing.JFrame {
         String bankname = BANKNAMEFIELD.getText();
         String recipient = RECIPIENTFIELD.getText();
         
+       
+        String time = mTime.getText();
+        String feedback = mFeedback.getText();
         
+        String selectedServiceType = (String) mServiceType.getSelectedItem();
+        String technicianName = mTechnician.getText();
+        String customerName = mCustomerName.getText();
         //Appointment
-        String paymentStatus = "active";
+//        String paymentStatus = "active";
 
 
         if(appt_name.isEmpty()) {
@@ -296,10 +393,17 @@ public class BillingManagement extends javax.swing.JFrame {
             return;
         }
 
-        if(amount.isEmpty() || !amount.chars().allMatch( Character::isDigit) ||
-            Double.parseDouble(amount) <= 0) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid amount for the billing");
-            return;
+        if(!amount.isEmpty()){
+            if (!amount.matches("\\d+(\\.\\d+)?")) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid amount for the appointment");
+                return;
+            }
+
+            // Now, if the amount is in a valid format, check if it's <= 0
+            if (Double.parseDouble(amount) <= 0) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid amount for the appointment");
+                return;
+            }
         }
 
         if(name.isEmpty()) {
@@ -320,7 +424,12 @@ public class BillingManagement extends javax.swing.JFrame {
         Biling biling = new Biling(appt_name,date,Double.parseDouble(AMOUNTFIELD.getText()),name,bankname,recipient);
 
         bilingService.create(biling);
+        
+        Appt updatedAppt = new Appt(appt_name,date,time,selectedServiceType,Double.parseDouble(AMOUNTFIELD.getText()),"Success",technicianName,customerName,feedback);
 
+        boolean isUpdated = apptService.update(appt_name, updatedAppt);
+        APPTNAMEFIELD.removeAllItems();
+        APPTNAMEFIELD.addItem("");
         APPTNAMEFIELD.setSelectedItem(null);
         DATEFIELD.setText("");
         AMOUNTFIELD.setText("");
@@ -328,6 +437,28 @@ public class BillingManagement extends javax.swing.JFrame {
         BANKNAMEFIELD.setText("");
         RECIPIENTFIELD.setText("");
         
+        try {
+            // Read all lines from the file into a list
+            for (String line : Files.readAllLines(Paths.get("storage/appointment.txt"))) {
+                String[] parts = line.split(",");
+                if (parts.length > 0) {
+                    String aname = parts[0];
+                    String techname = parts[6];
+                    String paymentStatus = parts[5];
+                    if(techname.equals(techDeatils.get("username").toString()) && !paymentStatus.equals("Success")){
+                       APPTNAMEFIELD.addItem(aname);
+                       detailsMap.put(name, parts);
+                    }                                    
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log the error
+        }
+        
+        if (!isUpdated) {
+            JOptionPane.showMessageDialog(this, "No appointment name was found to updated.");
+            return;
+        }
         
         JOptionPane.showMessageDialog(this, "Billing has been added");
     }//GEN-LAST:event_comfirmpaymentbuttonActionPerformed
@@ -378,7 +509,7 @@ public class BillingManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BillingManagement().setVisible(true);
+//                new BillingManagement().setVisible(true);
             }
         });
     }
@@ -400,6 +531,12 @@ public class BillingManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField mCustomerName;
+    private javax.swing.JTextField mFeedback;
+    private javax.swing.JComboBox<String> mServiceType;
+    private javax.swing.JTextField mTechnician;
+    private javax.swing.JTextField mTime;
     // End of variables declaration//GEN-END:variables
 }
