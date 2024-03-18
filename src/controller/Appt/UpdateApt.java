@@ -8,6 +8,8 @@ package controller.Appt;
 import javax.swing.*;
 import models.Appt;
 import controller.ApptServiceController;
+import controller.CustomerController;
+import controller.TechnicianController;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,8 +34,28 @@ public class UpdateApt extends javax.swing.JFrame {
      * Creates new form ModifyAppt
      */
     public UpdateApt() {
+        ArrayList<HashMap<String, Object>> allTechnicians;
+        ArrayList<HashMap<String, Object>> allCustomers;
+        TechnicianController technicianController = new TechnicianController();
+        allTechnicians = technicianController.getAllTechnicianList();
+        String [] technicianModel = new String[allTechnicians.size()];
+        CustomerController customerController = new CustomerController();
+        allCustomers = customerController.getAllCustomerList();
+        String [] customerModel = new String[allCustomers.size()];
+        
+        for(int x = 0;x < allTechnicians.size();x++)
+        {
+            technicianModel[x] = allTechnicians.get(x).get("username").toString();
+        }
+        
+        for(int x = 0;x < allCustomers.size();x++)
+        {
+            customerModel[x] = allCustomers.get(x).get("username").toString();
+        }
         initComponents();
         this.apptService = new ApptServiceController();
+        cbxUpdateApptCustomerName.setModel(new javax.swing.DefaultComboBoxModel<>(customerModel));
+        cbxUpdateApptTechnician.setModel(new javax.swing.DefaultComboBoxModel<>(technicianModel));
         performFileRelatedTask();
     }
 
@@ -57,7 +80,6 @@ public class UpdateApt extends javax.swing.JFrame {
         modText = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        mTechnician = new javax.swing.JTextField();
         modName = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -66,13 +88,14 @@ public class UpdateApt extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         text = new javax.swing.JTable();
-        mCustomerName = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         mFeedback = new javax.swing.JTextField();
         mDate = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         backButton1 = new javax.swing.JButton();
+        cbxUpdateApptTechnician = new javax.swing.JComboBox<>();
+        cbxUpdateApptCustomerName = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +128,11 @@ public class UpdateApt extends javax.swing.JFrame {
         jLabel10.setText("Enter New Payment Status");
 
         modText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null" }));
+        modText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modTextActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Enter New Technician");
 
@@ -165,10 +193,6 @@ public class UpdateApt extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(mDate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(mTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(mAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,17 +201,21 @@ public class UpdateApt extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(mPaymentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(mCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(mTime)
-                                    .addComponent(mServiceType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(cbxUpdateApptTechnician, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(mTime)
+                                            .addComponent(mServiceType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -197,15 +225,16 @@ public class UpdateApt extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(backButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(updateButton))
-                            .addComponent(mFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(mFeedback, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                            .addComponent(cbxUpdateApptCustomerName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(96, 96, 96))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {mAmount, mCustomerName, mDate, mFeedback, mPaymentStatus, mServiceType, mTechnician, mTime, modName, modText});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {mAmount, mDate, mFeedback, mPaymentStatus, mServiceType, mTime, modName, modText});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,13 +272,13 @@ public class UpdateApt extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(mPaymentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxUpdateApptTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxUpdateApptCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,7 +290,7 @@ public class UpdateApt extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {mAmount, mCustomerName, mDate, mFeedback, mPaymentStatus, mServiceType, mTechnician, mTime, modName, modText});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {mAmount, mDate, mFeedback, mPaymentStatus, mServiceType, mTime, modName, modText});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -270,9 +299,12 @@ public class UpdateApt extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,8 +404,8 @@ public class UpdateApt extends javax.swing.JFrame {
                         mServiceType.setSelectedItem(details[3]); 
                         mAmount.setText(details[4]); 
                         mPaymentStatus.setSelectedItem(details[5]); 
-                        mTechnician.setText(details[6]); 
-                        mCustomerName.setText(details[7]); 
+                        cbxUpdateApptTechnician.setSelectedItem(details[6]); 
+                        cbxUpdateApptCustomerName.setSelectedItem(details[7]); 
                         mFeedback.setText(details[8]); 
                         
                     }
@@ -429,8 +461,8 @@ public class UpdateApt extends javax.swing.JFrame {
         String amount = mAmount.getText();
         String paymentStatus = (String) mPaymentStatus.getSelectedItem();
         String selectedServiceType = (String) mServiceType.getSelectedItem();
-        String technicianName = mTechnician.getText();
-        String customerName = mCustomerName.getText();
+        String technicianName = cbxUpdateApptTechnician.getSelectedItem().toString();
+        String customerName = cbxUpdateApptCustomerName.getSelectedItem().toString();
 
         if(name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Edit appointment name cannot be empty");
@@ -492,10 +524,8 @@ public class UpdateApt extends javax.swing.JFrame {
         mDate.setText("");
         mTime.setText("");
         mServiceType.setSelectedItem("");
-        mTechnician.setText("");
         mAmount.setText("");
         mFeedback.setText("");
-        mCustomerName.setText("");
         mPaymentStatus.setSelectedItem("");
         JOptionPane.showMessageDialog(this, "Appointment has been modify");
 
@@ -508,6 +538,10 @@ public class UpdateApt extends javax.swing.JFrame {
         im.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void modTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -546,6 +580,8 @@ public class UpdateApt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton1;
+    private javax.swing.JComboBox<String> cbxUpdateApptCustomerName;
+    private javax.swing.JComboBox<String> cbxUpdateApptTechnician;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -561,12 +597,10 @@ public class UpdateApt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField mAmount;
-    private javax.swing.JTextField mCustomerName;
     private javax.swing.JTextField mDate;
     private javax.swing.JTextField mFeedback;
     private javax.swing.JComboBox<String> mPaymentStatus;
     private javax.swing.JComboBox<String> mServiceType;
-    private javax.swing.JTextField mTechnician;
     private javax.swing.JTextField mTime;
     private javax.swing.JTextField modName;
     private javax.swing.JComboBox<String> modText;

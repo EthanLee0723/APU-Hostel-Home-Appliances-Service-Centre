@@ -9,6 +9,7 @@ import models.Managers;
 import models.Technicians;
 import models.Customers;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import view.ManagerDashboard;
 import view.TechnicianDashboard;
 import view.Login;
@@ -85,11 +86,12 @@ public class LoginController {
         return false;
     }
     
-    public void userLogIn(String username,String password,Login login)
+    public String userLogIn(String username,String password,Login login)
     {
         Managers manager = new Managers(username,password);
         Customers customer = new Customers(username,password);
         Technicians technician = new Technicians(username,password);
+        String loginStatus = "success";
         if(manager.getId() != 0)
         {
             ManagerDashboard managerDashboard = new ManagerDashboard(manager.getId());
@@ -106,11 +108,20 @@ public class LoginController {
         }
         else if(customer.getId() != 0)
         {
-            System.out.println("customer");
+            loginStatus = "customer";
         }
         else
         {
-            
+            loginStatus = "fail";
         }
+        
+        return loginStatus;
+    }
+    
+    public void generateDefaultUserFile()
+    {
+        Managers manager = new Managers();
+        Customers customer = new Customers();
+        Technicians technician = new Technicians();
     }
 }

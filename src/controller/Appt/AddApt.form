@@ -60,7 +60,7 @@
                   <Component id="jLabel1" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,25 +107,25 @@
                           <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="apptDateField" linkSize="5" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptNameField" linkSize="5" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptTimeField" linkSize="5" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptServiceTypeField" linkSize="5" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptFeedbackField" linkSize="5" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptAmountField" linkSize="5" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptPaymentStatusField" linkSize="5" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptTechnicianField" linkSize="5" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
-                                  <Component id="apptCustomerNameField" linkSize="5" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="comfirmpaymentbutton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbxAddApptTechnician" max="32767" attributes="0"/>
+                                  <Component id="cbxAddApptCustomerName" max="32767" attributes="0"/>
+                                  <Component id="apptDateField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptNameField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptTimeField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptServiceTypeField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptFeedbackField" linkSize="5" alignment="1" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptAmountField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="apptPaymentStatusField" linkSize="5" alignment="0" pref="224" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -136,53 +136,64 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="apptNameField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      <Component id="apptDateField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="apptTimeField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" linkSize="4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="apptServiceTypeField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="apptAmountField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="apptPaymentStatusField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" linkSize="4" min="-2" pref="26" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                                      <Component id="cbxAddApptCustomerName" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel4" linkSize="4" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="cbxAddApptTechnician" pref="31" max="32767" attributes="0"/>
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Component id="jLabel10" linkSize="4" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel5" linkSize="4" min="-2" pref="28" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                               <Component id="jLabel9" linkSize="4" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="apptNameField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Component id="apptDateField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptTimeField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" linkSize="4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptServiceTypeField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptAmountField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="apptPaymentStatusField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptTechnicianField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" linkSize="4" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptCustomerNameField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" linkSize="4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="apptFeedbackField" linkSize="6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" linkSize="4" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="apptFeedbackField" linkSize="6" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel8" linkSize="4" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="comfirmpaymentbutton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -233,11 +244,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="apptTimeFieldActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="apptTechnicianField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="apptTechnicianFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Payment Status :"/>
@@ -252,8 +258,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Customer Name :"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="apptCustomerNameField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -295,7 +299,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
                     <StringItem index="0" value="Pending"/>
-                    <StringItem index="1" value="Sucess"/>
+                    <StringItem index="1" value="Success"/>
                     <StringItem index="2" value="Failed"/>
                   </StringArray>
                 </Property>
@@ -313,6 +317,32 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Amount :"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbxAddApptCustomerName">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[73, 22]"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbxAddApptTechnician">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[73, 22]"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

@@ -8,6 +8,7 @@ package view;
 import java.io.*;    
 import java.util.Scanner;
 import controller.LoginController;
+import javax.swing.JOptionPane;
 import view.ManagerDashboard;
 import view.Login;
 /**
@@ -21,6 +22,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        LoginController loginController = new LoginController();
+        loginController.generateDefaultUserFile();
     }
 
     /**
@@ -59,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoginMouseClicked(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -106,8 +114,20 @@ public class Login extends javax.swing.JFrame {
         String inputtedUsername = txtLoginUsername.getText();
         String inputtedPwd = pwdTxtLoginPwd.getText();
         LoginController loginController = new LoginController();
-        loginController.userLogIn(inputtedUsername,inputtedPwd,this);
+        String loginStatus = loginController.userLogIn(inputtedUsername,inputtedPwd,this);
+        if(loginStatus.equals("customer"))
+        {
+            JOptionPane.showMessageDialog(this, "logged in to customer");
+        }
+        else if(loginStatus.equals("fail"))
+        {
+            JOptionPane.showMessageDialog(this, "Login credentials is invalid, please try again.");
+        }
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments

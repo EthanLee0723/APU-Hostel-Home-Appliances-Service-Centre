@@ -8,11 +8,15 @@ package controller.Appt;
 import javax.swing.*;
 import models.Appt;
 import controller.ApptServiceController;
+import controller.CustomerController;
+import controller.TechnicianController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,8 +32,30 @@ public class AddApt extends javax.swing.JFrame {
      * Creates new form AddApt
      */
     public AddApt() {
+        ArrayList<HashMap<String, Object>> allTechnicians;
+        ArrayList<HashMap<String, Object>> allCustomers;
+        TechnicianController technicianController = new TechnicianController();
+        allTechnicians = technicianController.getAllTechnicianList();
+        String [] technicianModel = new String[allTechnicians.size()];
+        CustomerController customerController = new CustomerController();
+        allCustomers = customerController.getAllCustomerList();
+        String [] customerModel = new String[allCustomers.size()];
+        
+        
+        for(int x = 0;x < allTechnicians.size();x++)
+        {
+            technicianModel[x] = allTechnicians.get(x).get("username").toString();
+        }
+        
+        for(int x = 0;x < allCustomers.size();x++)
+        {
+            customerModel[x] = allCustomers.get(x).get("username").toString();
+        }
+        
         initComponents();
         this.apptService = new ApptServiceController();
+        cbxAddApptCustomerName.setModel(new javax.swing.DefaultComboBoxModel<>(customerModel));
+        cbxAddApptTechnician.setModel(new javax.swing.DefaultComboBoxModel<>(technicianModel));
     }
 
     /**
@@ -52,11 +78,9 @@ public class AddApt extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         apptTimeField = new javax.swing.JTextField();
-        apptTechnicianField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        apptCustomerNameField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         apptFeedbackField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
@@ -64,6 +88,8 @@ public class AddApt extends javax.swing.JFrame {
         apptPaymentStatusField = new javax.swing.JComboBox<>();
         apptAmountField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        cbxAddApptCustomerName = new javax.swing.JComboBox<>();
+        cbxAddApptTechnician = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,12 +128,6 @@ public class AddApt extends javax.swing.JFrame {
             }
         });
 
-        apptTechnicianField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apptTechnicianFieldActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Payment Status :");
 
         jLabel10.setText("Name :");
@@ -130,7 +150,7 @@ public class AddApt extends javax.swing.JFrame {
             }
         });
 
-        apptPaymentStatusField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Sucess", "Failed" }));
+        apptPaymentStatusField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Success", "Failed" }));
 
         apptAmountField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +159,10 @@ public class AddApt extends javax.swing.JFrame {
         });
 
         jLabel11.setText("Amount :");
+
+        cbxAddApptCustomerName.setPreferredSize(new java.awt.Dimension(73, 22));
+
+        cbxAddApptTechnician.setPreferredSize(new java.awt.Dimension(73, 22));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,26 +184,26 @@ public class AddApt extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apptDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptServiceTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptFeedbackField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptPaymentStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptTechnicianField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apptCustomerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(128, 128, 128))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comfirmpaymentbutton)
-                        .addGap(71, 71, 71))))
+                        .addGap(71, 71, 71))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxAddApptTechnician, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxAddApptCustomerName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(apptDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(apptNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(apptTimeField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(apptServiceTypeField, 0, 224, Short.MAX_VALUE)
+                            .addComponent(apptFeedbackField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(apptAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(apptPaymentStatusField, 0, 224, Short.MAX_VALUE))
+                        .addGap(128, 128, 128))))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {apptAmountField, apptCustomerNameField, apptDateField, apptFeedbackField, apptNameField, apptPaymentStatusField, apptServiceTypeField, apptTechnicianField, apptTimeField});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {apptAmountField, apptDateField, apptFeedbackField, apptNameField, apptPaymentStatusField, apptServiceTypeField, apptTimeField});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,43 +211,50 @@ public class AddApt extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(apptNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addComponent(apptDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(apptTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(apptServiceTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(apptAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(apptPaymentStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(227, 227, 227)
+                                .addComponent(cbxAddApptCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(cbxAddApptTechnician, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                                .addGap(3, 3, 3))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(128, 128, 128)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(apptFeedbackField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(apptNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(apptDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptServiceTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(apptPaymentStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptTechnicianField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptCustomerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apptFeedbackField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comfirmpaymentbutton)
                     .addComponent(backButton))
@@ -232,7 +263,7 @@ public class AddApt extends javax.swing.JFrame {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {apptAmountField, apptCustomerNameField, apptDateField, apptFeedbackField, apptNameField, apptPaymentStatusField, apptServiceTypeField, apptTechnicianField, apptTimeField});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {apptAmountField, apptDateField, apptFeedbackField, apptNameField, apptPaymentStatusField, apptServiceTypeField, apptTimeField});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -252,7 +283,7 @@ public class AddApt extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,8 +346,10 @@ public class AddApt extends javax.swing.JFrame {
         String amount = apptAmountField.getText();
         String paymentStatus = (String) apptPaymentStatusField.getSelectedItem();
         String selectedServiceType = (String) apptServiceTypeField.getSelectedItem();
-        String technicianName = apptTechnicianField.getText();
-        String customerName = apptCustomerNameField.getText();
+        String technicianName = cbxAddApptTechnician.getSelectedItem().toString();
+        String customerName = cbxAddApptCustomerName.getSelectedItem().toString();
+        System.out.println(technicianName);
+        System.out.println(customerName);
         
         if(name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Appointment name cannot be empty");
@@ -367,10 +400,8 @@ public class AddApt extends javax.swing.JFrame {
         apptFeedbackField.setText("");
         apptAmountField.setText("");
         apptServiceTypeField.setSelectedItem("");
-        apptTechnicianField.setText("");
         apptDateField.setText("");
         apptTimeField.setText("");
-        apptCustomerNameField.setText("");
         apptPaymentStatusField.setSelectedItem("");
         JOptionPane.showMessageDialog(this, "Appointment has been added");
     }//GEN-LAST:event_comfirmpaymentbuttonActionPerformed
@@ -382,10 +413,6 @@ public class AddApt extends javax.swing.JFrame {
     private void apptTimeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptTimeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apptTimeFieldActionPerformed
-
-    private void apptTechnicianFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptTechnicianFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apptTechnicianFieldActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         ApptManagement im = new ApptManagement();
@@ -438,15 +465,15 @@ public class AddApt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apptAmountField;
-    private javax.swing.JTextField apptCustomerNameField;
     private javax.swing.JTextField apptDateField;
     private javax.swing.JTextField apptFeedbackField;
     private javax.swing.JTextField apptNameField;
     private javax.swing.JComboBox<String> apptPaymentStatusField;
     private javax.swing.JComboBox<String> apptServiceTypeField;
-    private javax.swing.JTextField apptTechnicianField;
     private javax.swing.JTextField apptTimeField;
     private javax.swing.JButton backButton;
+    private javax.swing.JComboBox<String> cbxAddApptCustomerName;
+    private javax.swing.JComboBox<String> cbxAddApptTechnician;
     private javax.swing.JButton comfirmpaymentbutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
