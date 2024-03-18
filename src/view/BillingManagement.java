@@ -5,10 +5,21 @@
  */
 package view;
 
+import controller.ApptServiceController;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import models.Biling;
 import controller.BillingServiceController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
+import models.Appt;
 /**
  *
  * @author GENJI
@@ -16,12 +27,18 @@ import controller.BillingServiceController;
 public class BillingManagement extends javax.swing.JFrame {
 
     private final BillingServiceController bilingService;
+    private final ApptServiceController apptService;
+    private static Map<String, String[]> detailsMap = new HashMap<>();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
     /**
      * Creates new form BillingManagement
      */
     public BillingManagement() {
         initComponents();
         this.bilingService = new BillingServiceController();
+        this.apptService = new ApptServiceController();
+        performFileRelatedTask();
     }
 
     /**
@@ -38,22 +55,18 @@ public class BillingManagement extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         comfirmpaymentbutton = new javax.swing.JButton();
-        IDFIELD = new javax.swing.JTextField();
         DATEFIELD = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         AMOUNTFIELD = new javax.swing.JTextField();
-        NAMEFIELD = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         BANKNAMEFIELD = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         RECIPIENTFIELD = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
-        SERVICETYPEFIELD = new javax.swing.JComboBox<>();
-        STATUSFIELD = new javax.swing.JComboBox<>();
+        NAMEFIELD = new javax.swing.JTextField();
+        APPTNAMEFIELD = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,15 +87,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        IDFIELD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDFIELDActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Date :");
-
-        jLabel6.setText("Service Type :");
 
         jLabel7.setText("Amount :");
 
@@ -92,15 +97,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        NAMEFIELD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NAMEFIELDActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Status :");
-
-        jLabel10.setText("User ID :");
+        jLabel10.setText("Appointment name:");
 
         jLabel4.setText("Bank Name:");
 
@@ -113,80 +110,77 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        SERVICETYPEFIELD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Room Cleaning", "Bed Linen Change", "Breakfast", "Laundry", "Tour Guide" }));
-        SERVICETYPEFIELD.addActionListener(new java.awt.event.ActionListener() {
+        NAMEFIELD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SERVICETYPEFIELDActionPerformed(evt);
+                NAMEFIELDActionPerformed(evt);
             }
         });
 
-        STATUSFIELD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Sucess", "Failed" }));
+        APPTNAMEFIELD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        APPTNAMEFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                APPTNAMEFIELDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(48, 48, 48)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IDFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(DATEFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(BANKNAMEFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(AMOUNTFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(RECIPIENTFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(NAMEFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(SERVICETYPEFIELD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(STATUSFIELD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comfirmpaymentbutton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(87, 87, 87))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(DATEFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(AMOUNTFIELD, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(APPTNAMEFIELD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BANKNAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RECIPIENTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comfirmpaymentbutton)
+                        .addGap(39, 39, 39))))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {AMOUNTFIELD, APPTNAMEFIELD, BANKNAMEFIELD, DATEFIELD, NAMEFIELD, RECIPIENTFIELD, jLabel10, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(IDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(APPTNAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DATEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SERVICETYPEFIELD))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AMOUNTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AMOUNTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addComponent(STATUSFIELD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(NAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BANKNAMEFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,23 +189,28 @@ public class BillingManagement extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RECIPIENTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comfirmpaymentbutton)
                     .addComponent(backButton))
-                .addGap(25, 25, 25))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMOUNTFIELD, APPTNAMEFIELD, BANKNAMEFIELD, DATEFIELD, NAMEFIELD, RECIPIENTFIELD, jLabel10, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,40 +236,69 @@ public class BillingManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void performFileRelatedTask() {
+        APPTNAMEFIELD.removeAllItems();
+        APPTNAMEFIELD.addItem("");
+        String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name", "Feedback"};
+         // Create DefaultTableModel with column names
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        
+        apptService.getAll().forEach((appt) -> {
+            model.addRow(new Object[]{
+                appt.getName(),
+                appt.getDate(),
+                appt.getTime(),
+                appt.getServiceType(),
+                appt.getAmount(),
+                appt.getPaymentStatus(),
+                appt.getTechnician(),
+                appt.getCustomerName(),
+                appt.getFeedback()
+            });
+        });
+        
+        try {
+            // Read all lines from the file into a list
+            for (String line : Files.readAllLines(Paths.get("storage/appointment.txt"))) {
+                String[] parts = line.split(",");
+                if (parts.length > 0) {
+                    String name = parts[0];
+                    APPTNAMEFIELD.addItem(name);
+                    detailsMap.put(name, parts);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log the error
+        }
+        
+    }
     private void comfirmpaymentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmpaymentbuttonActionPerformed
 
-        String ID = IDFIELD.getText();
+        String appt_name = APPTNAMEFIELD.getSelectedItem().toString();
         String date = DATEFIELD.getText();
-        String service_type = SERVICETYPEFIELD.getSelectedItem().toString();
         String amount = AMOUNTFIELD.getText();
-        String status = STATUSFIELD.getSelectedItem().toString();
         String name = NAMEFIELD.getText();
         String bankname = BANKNAMEFIELD.getText();
         String recipient = RECIPIENTFIELD.getText();
+        
+        
+        //Appointment
+        String paymentStatus = "active";
 
-        if(ID.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "ID cannot be empty");
+
+        if(appt_name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Appointment Name cannot be empty");
             return;
         }
-
+        
         if(date.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Date cannot be empty");
-            return;
-        }
-
-        if(service_type.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Service Type cannot be empty");
             return;
         }
 
         if(amount.isEmpty() || !amount.chars().allMatch( Character::isDigit) ||
             Double.parseDouble(amount) <= 0) {
             JOptionPane.showMessageDialog(this, "Please enter a valid amount for the billing");
-            return;
-        }
-
-        if(status.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Status Type cannot be empty");
             return;
         }
 
@@ -284,51 +312,41 @@ public class BillingManagement extends javax.swing.JFrame {
             return;
         }
 
-        if(bankname.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Bank Name cannot be empty");
-            return;
-        }
-
         if(recipient.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Recipient cannot be empty");
             return;
         }
 
-        Biling biling = new Biling(ID,date,service_type,Double.parseDouble(AMOUNTFIELD.getText()),status,name,bankname,recipient);
+        Biling biling = new Biling(appt_name,date,Double.parseDouble(AMOUNTFIELD.getText()),name,bankname,recipient);
 
         bilingService.create(biling);
 
-        IDFIELD.setText("");
+        APPTNAMEFIELD.setSelectedItem(null);
         DATEFIELD.setText("");
-        SERVICETYPEFIELD.setSelectedItem(null);
         AMOUNTFIELD.setText("");
-        STATUSFIELD.setSelectedItem(null);
         NAMEFIELD.setText("");
         BANKNAMEFIELD.setText("");
         RECIPIENTFIELD.setText("");
-
+        
+        
         JOptionPane.showMessageDialog(this, "Billing has been added");
     }//GEN-LAST:event_comfirmpaymentbuttonActionPerformed
-
-    private void IDFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFIELDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IDFIELDActionPerformed
 
     private void AMOUNTFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMOUNTFIELDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AMOUNTFIELDActionPerformed
 
-    private void NAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NAMEFIELDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NAMEFIELDActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
 
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void SERVICETYPEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SERVICETYPEFIELDActionPerformed
+    private void NAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NAMEFIELDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SERVICETYPEFIELDActionPerformed
+    }//GEN-LAST:event_NAMEFIELDActionPerformed
+
+    private void APPTNAMEFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APPTNAMEFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_APPTNAMEFIELDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,13 +385,11 @@ public class BillingManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AMOUNTFIELD;
+    private javax.swing.JComboBox<String> APPTNAMEFIELD;
     private javax.swing.JTextField BANKNAMEFIELD;
     private javax.swing.JTextField DATEFIELD;
-    private javax.swing.JTextField IDFIELD;
     private javax.swing.JTextField NAMEFIELD;
     private javax.swing.JTextField RECIPIENTFIELD;
-    private javax.swing.JComboBox<String> SERVICETYPEFIELD;
-    private javax.swing.JComboBox<String> STATUSFIELD;
     private javax.swing.JButton backButton;
     private javax.swing.JButton comfirmpaymentbutton;
     private javax.swing.JLabel jLabel1;
@@ -381,10 +397,8 @@ public class BillingManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
