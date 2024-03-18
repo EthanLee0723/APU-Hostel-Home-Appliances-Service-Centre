@@ -5,6 +5,8 @@
  */
 package view;
 import controller.TechnicianController;
+import controller.UserController;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -128,7 +130,15 @@ public class CreateTechnician extends javax.swing.JFrame {
         String inputtedUsername =  tbxCreateTechnicianUsername.getText();
         String inputtedPassword = tbxCreateTechnicianPwd.getText();
         TechnicianController technicianController = new TechnicianController();
-        technicianController.createNewTechnician(inputtedUsername, inputtedPassword);
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+             technicianController.createNewTechnician(inputtedUsername, inputtedPassword);
+        }
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

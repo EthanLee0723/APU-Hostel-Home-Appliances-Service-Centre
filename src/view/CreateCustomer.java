@@ -5,6 +5,8 @@
  */
 package view;
 import controller.CustomerController;
+import controller.UserController;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -127,7 +129,15 @@ public class CreateCustomer extends javax.swing.JFrame {
         String inputtedUsername = tbxCreateCustomerUsername.getText();
         String inputtedPwd = tbxCreateCustomerPwd.getText();
         CustomerController customerController = new CustomerController();
-        customerController.createCustomer(inputtedUsername, inputtedPwd);
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+             customerController.createCustomer(inputtedUsername, inputtedPwd);
+        }
     }//GEN-LAST:event_btnCreateCustomerCreateActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

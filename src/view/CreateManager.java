@@ -7,6 +7,8 @@ package view;
 
 import controller.ManagerController;
 import view.ManagerDashboard;
+import controller.UserController;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -132,7 +134,15 @@ public class CreateManager extends javax.swing.JFrame {
         String inputtedUsername = tbxCreateManagerUsername.getText();
         String inputtedPwd = tbxCreateManagerPwd.getText();
         ManagerController managerController = new ManagerController();
-        managerController.createManager(inputtedUsername, inputtedPwd);
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+             managerController.createManager(inputtedUsername, inputtedPwd);
+        }
     }//GEN-LAST:event_btnCreateManagerCreateActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

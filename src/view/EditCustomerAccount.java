@@ -5,7 +5,9 @@
  */
 package view;
 import controller.CustomerController;
+import controller.UserController;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -153,7 +155,15 @@ public class EditCustomerAccount extends javax.swing.JFrame {
         String inputtedUsername = tbxCustomerNewUsername.getText();
         String inputtedPassword = tbxCustomerNewPwd.getText();
         CustomerController customerController = new CustomerController();
-        customerController.editCustomerAcc(customerId,inputtedUsername,inputtedPassword);
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+             customerController.editCustomerAcc(customerId,inputtedUsername,inputtedPassword);
+        }
     }//GEN-LAST:event_btnSaveEditCustomerAccActionPerformed
 
     /**

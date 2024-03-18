@@ -5,8 +5,10 @@
  */
 package view;
 import controller.TechnicianController;
+import controller.UserController;
 import java.util.HashMap;
 import view.EditTechnicianSelection;
+import javax.swing.JOptionPane;
 //import view.ManagerDashboard;
 
 /**
@@ -166,7 +168,15 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         String inputtedUsername = tbxTechnicianNewUsername.getText();
         String inputtedPassword = tbxTechnicianNewPwd.getText();
         TechnicianController technicianController = new TechnicianController();
-        technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+             technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
+        }
     }//GEN-LAST:event_btnSaveEditTechnicianAccActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

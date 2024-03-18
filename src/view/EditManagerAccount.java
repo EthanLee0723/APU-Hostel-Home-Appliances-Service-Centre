@@ -5,8 +5,10 @@
  */
 package view;
 import controller.ManagerController;
+import controller.UserController;
 import view.ManagerDashboard;
 import java.util.HashMap; 
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -184,11 +186,19 @@ public class EditManagerAccount extends javax.swing.JFrame {
         String inputtedUsername = tbxEditManagerNewUsername.getText();
         String inputtedPassword = tbxEditManagerNewPassword.getText();
         ManagerController managerController = new ManagerController();
-        managerController.editManagerAcc(loggedInManagerId,inputtedUsername,inputtedPassword);
-        ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerId);
-        managerDashboard.setVisible(true);
-        setVisible(false);
-        dispose();
+        UserController userController = new UserController();
+        if(userController.hasUserExisted(inputtedUsername))
+        {
+            JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else
+        {
+            managerController.editManagerAcc(loggedInManagerId,inputtedUsername,inputtedPassword);
+            ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerId);
+            managerDashboard.setVisible(true);
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_btnSaveEditManagerAccActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
