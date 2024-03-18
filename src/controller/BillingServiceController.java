@@ -39,9 +39,9 @@ public class BillingServiceController {
 
                 String bilingInfo[] = bilingLine.split(",");
 
-                Biling labour = new Biling(bilingInfo[0], bilingInfo[1], bilingInfo[2], Double.parseDouble(bilingInfo[3]), bilingInfo[4], bilingInfo[5], bilingInfo[6], bilingInfo[7]);
+                Biling billing = new Biling(bilingInfo[0], bilingInfo[1], Double.parseDouble(bilingInfo[2]), bilingInfo[3], bilingInfo[4], bilingInfo[5]);
 
-                labourList.add(labour);
+                labourList.add(billing);
             }
         } catch (FileNotFoundException ex) {
             //Logger.getLogger(DeleteBiling.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,7 +51,7 @@ public class BillingServiceController {
     
     public void create(Biling biling) {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("storage/Billing.txt", true))) {
-            pw.println(biling.getID() + "," + biling.getDate() + "," + biling.getST()+ "," + biling.getAmount()+ "," + biling.getStatus()+ "," + biling.getName()+ "," + biling.getBankname()+ "," + biling.getRecipient());
+            pw.println(biling.getApptname() + "," + biling.getDate() + "," + biling.getAmount()+ "," + biling.getName()+ "," + biling.getBankname()+ "," + biling.getRecipient());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BillingServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
