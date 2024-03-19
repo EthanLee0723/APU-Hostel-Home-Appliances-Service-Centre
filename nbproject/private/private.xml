@@ -6,15 +6,10 @@
             <file>file:/E:/code_superman/repo/src/view/Main.java</file>
             <file>file:/E:/code_superman/repo/src/view/EditTechnicianAccount.java</file>
             <file>file:/E:/code_superman/repo/src/database/Customers.txt</file>
-            <file>file:/E:/code_superman/repo/src/controller/Appt/DeleteApt.java</file>
-            <file>file:/E:/code_superman/repo/src/controller/Appt/UpdateApt.java</file>
-            <file>file:/E:/code_superman/repo/src/controller/Appt/ApptManagement.java</file>
             <file>file:/E:/code_superman/repo/src/view/EditManagerAccount.java</file>
             <file>file:/E:/code_superman/repo/src/view/CreateTechnician.java</file>
             <file>file:/E:/code_superman/repo/src/view/Login.java</file>
-            <file>file:/E:/code_superman/repo/src/controller/Appt/AddApt.java</file>
             <file>file:/E:/code_superman/repo/src/view/CreateCustomer.java</file>
-            <file>file:/E:/code_superman/repo/src/controller/Appt/ViewApt.java</file>
             <file>file:/E:/code_superman/repo/src/database/Managers.txt</file>
             <file>file:/E:/code_superman/repo/src/database/Technicians.txt</file>
             <file>file:/E:/code_superman/repo/src/view/CreateManager.java</file>
@@ -22,11 +17,9 @@
             <file>file:/E:/code_superman/repo/src/view/EditTechnicianSelection.java</file>
             <file>file:/E:/code_superman/repo/src/view/ViewAppoinment.java</file>
             <file>file:/E:/code_superman/repo/src/view/EditCustomerSelection.java</file>
-            <file>file:/E:/code_superman/repo/src/view/BillingManagement.java</file>
             <file>file:/E:/code_superman/repo/src/view/ManagerDashboard.java</file>
             <file>file:/E:/code_superman/repo/src/view/EditCustomerAccount.java</file>
             <file>file:/E:/code_superman/repo/src/view/FeedbackAppointment.java</file>
-            <file>file:/E:/code_superman/repo/src/models/Biling.java</file>
         </group>
     </open-files>
 </project-private>

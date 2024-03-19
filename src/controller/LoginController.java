@@ -94,6 +94,7 @@ public class LoginController {
         String loginStatus = "success";
         if(manager.getId() != 0)
         {
+            JOptionPane.showMessageDialog(null, "Manager Login Sucess: " + manager.getUsername());
             ManagerDashboard managerDashboard = new ManagerDashboard(manager.getId());
             login.setVisible(false);
             login.dispose();
@@ -101,6 +102,7 @@ public class LoginController {
         }
         else if(technician.getId() != 0)
         {
+            JOptionPane.showMessageDialog(null, "Technician Login Sucess: " + technician.getUsername());
             TechnicianDashboard technicianDashboard = new TechnicianDashboard(technician.getId());
             login.setVisible(false);
             login.dispose();
