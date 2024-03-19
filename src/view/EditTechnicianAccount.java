@@ -17,12 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class EditTechnicianAccount extends javax.swing.JFrame {
     private int technicianId;
+    private String techPersonal;
     
     /**
      * Creates new form EditTechnicianAccount
      */
-    public EditTechnicianAccount(int technicianId) {
+    public EditTechnicianAccount(int technicianId, String techPersonal) {
         this.technicianId = technicianId;
+        this.techPersonal = techPersonal;
         TechnicianController technicianController = new TechnicianController();
         HashMap<String, Object> technicianDetails = technicianController.getTechnicianDetails(this.technicianId);
         initComponents();
@@ -175,15 +177,30 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         }
         else
         {
-             technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
+            technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
+            JOptionPane.showMessageDialog(this, "Technician Edit Success");
+            TechnicianDashboard td = new TechnicianDashboard(technicianId);
+            td.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_btnSaveEditTechnicianAccActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        EditTechnicianSelection et = new EditTechnicianSelection();
-        et.setVisible(true);
-        setVisible(false);
-        dispose();       // TODO add your handling code here:
+        
+        System.out.println(techPersonal);
+        if ("techPersonal".equals(techPersonal)) {
+            EditTechnicianSelection et = new EditTechnicianSelection();
+            et.setVisible(true);
+            setVisible(false);
+            dispose(); 
+        } else {
+            TechnicianDashboard td = new TechnicianDashboard(technicianId);
+            td.setVisible(true);
+            setVisible(false);
+            dispose();
+        }
+
     }//GEN-LAST:event_backActionPerformed
 
     /**
