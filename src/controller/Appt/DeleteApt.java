@@ -14,10 +14,12 @@ import javax.swing.table.DefaultTableModel;
 public class DeleteApt extends javax.swing.JFrame {
 
     private final ApptServiceController apptService;
+    private int loggedInManagerId;
     /**
      * Creates new form DeleteApt
      */
-    public DeleteApt() {
+    public DeleteApt(int managerId) {
+        loggedInManagerId = managerId;
         initComponents();
         this.apptService = new ApptServiceController();
         performFileRelatedTask();
@@ -163,6 +165,7 @@ public class DeleteApt extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dlttextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlttextActionPerformed
@@ -193,7 +196,7 @@ public class DeleteApt extends javax.swing.JFrame {
     }
     
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        ApptManagement im = new ApptManagement();
+        ApptManagement im = new ApptManagement(loggedInManagerId);
         im.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
@@ -255,7 +258,7 @@ public class DeleteApt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteApt().setVisible(true);
+//                new DeleteApt().setVisible(true);
             }
         });
     }

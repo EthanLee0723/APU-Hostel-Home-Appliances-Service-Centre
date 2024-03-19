@@ -66,7 +66,7 @@ public class CreateManager extends javax.swing.JFrame {
 
         lblLoginUsername1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblLoginUsername1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblLoginUsername1.setText("EDIT MANAGER PROFILE");
+        lblLoginUsername1.setText("CREATE NEW MANAGER");
         lblLoginUsername1.setAlignmentY(0.0F);
 
         back.setText("BACK");
@@ -81,7 +81,7 @@ public class CreateManager extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
+                .addContainerGap(280, Short.MAX_VALUE)
                 .addComponent(lblLoginUsername1)
                 .addGap(256, 256, 256))
             .addGroup(layout.createSequentialGroup()
@@ -128,6 +128,7 @@ public class CreateManager extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateManagerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerCreateActionPerformed
@@ -138,6 +139,10 @@ public class CreateManager extends javax.swing.JFrame {
         if(userController.hasUserExisted(inputtedUsername))
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else if(inputtedUsername.isEmpty() || inputtedPwd.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
         }
         else
         {

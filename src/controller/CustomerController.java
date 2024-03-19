@@ -60,4 +60,9 @@ public class CustomerController {
         customerDetails.put("password", customers.getPassword());
         return customerDetails;
     }
+    
+    public boolean isCustomerDatabaseEmpty()
+    {
+        return getAllCustomerList().size() == 0;
+    }
 }

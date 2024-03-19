@@ -6,6 +6,9 @@ import view.Login;
 import view.EditTechnicianSelection;
 import view.EditCustomerSelection;
 import controller.Appt.ApptManagement;
+import controller.TechnicianController;
+import controller.CustomerController;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -177,6 +180,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {apptManagementButton, btnCreateCustomer, btnCreateManager, btnCreateTechnician, btnEditCustomerDetails, btnEditMyAcc, btnEditTechnicianDetails});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManagerLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagerLogoutActionPerformed
@@ -187,34 +191,50 @@ public class ManagerDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManagerLogoutActionPerformed
 
     private void apptManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptManagementButtonActionPerformed
-        ApptManagement im = new ApptManagement();
+        ApptManagement im = new ApptManagement(loggedInManagerid);
         im.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_apptManagementButtonActionPerformed
 
     private void btnEditCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerDetailsActionPerformed
-        EditCustomerSelection editCustomerSelection = new EditCustomerSelection();
-        editCustomerSelection.setVisible(true);
-        setVisible(false);
-        dispose();
+        CustomerController customerController = new CustomerController();
+        if(customerController.isCustomerDatabaseEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "There are no customers available to edit, please create a customer to proceed.");
+        }
+        else
+        {
+            EditCustomerSelection editCustomerSelection = new EditCustomerSelection(loggedInManagerid);
+            editCustomerSelection.setVisible(true);
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
 
     private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
-        CreateCustomer createCustomer = new CreateCustomer();
+        CreateCustomer createCustomer = new CreateCustomer(loggedInManagerid);
         createCustomer.setVisible(true);
         setVisible(false);
         dispose();
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
 
     private void btnEditTechnicianDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianDetailsActionPerformed
-        EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection();
-        editTechnicianSelection.setVisible(true);
-        setVisible(false);
-        dispose();
+        TechnicianController technicianController = new TechnicianController();
+        if(technicianController.isTechnicianDatabaseEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "There are no technicians available to edit, please create a technician to proceed.");
+        }
+        else
+        {
+            EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection(loggedInManagerid);
+            editTechnicianSelection.setVisible(true);
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_btnEditTechnicianDetailsActionPerformed
 
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
-        CreateTechnician createTechnician = new CreateTechnician();
+        CreateTechnician createTechnician = new CreateTechnician(loggedInManagerid);
         createTechnician.setVisible(true);
         setVisible(false);
         dispose();

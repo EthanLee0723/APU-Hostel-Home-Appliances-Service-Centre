@@ -19,7 +19,8 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
     /**
      * Creates new form EditTechnicianSelection
      */
-    public EditTechnicianSelection() {
+    public EditTechnicianSelection(int managerId) {
+        loggedInManagerid = managerId;
         TechnicianController technicianController = new TechnicianController();
         allTechnicians = technicianController.getAllTechnicianList();
         String [] technicianModel = new String[allTechnicians.size()];
@@ -116,11 +117,12 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditTechnicianSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianSelectionActionPerformed
         int selectedInd = combobxEditTechnicianSelection.getSelectedIndex();
-        EditTechnicianAccount editTechnnicianAccount = new EditTechnicianAccount(Integer.parseInt(allTechnicians.get(selectedInd).get("id").toString()),"null");
+        EditTechnicianAccount editTechnnicianAccount = new EditTechnicianAccount(Integer.parseInt(allTechnicians.get(selectedInd).get("id").toString()),loggedInManagerid,"null");
         editTechnnicianAccount.setVisible(true);
         setVisible(false);
         dispose();
@@ -163,7 +165,7 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditTechnicianSelection().setVisible(true);
+//                new EditTechnicianSelection().setVisible(true);
             }
         });
     }

@@ -16,13 +16,15 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class EditTechnicianAccount extends javax.swing.JFrame {
+    private int loggedInManagerId;
     private int technicianId;
     private String techPersonal;
     
     /**
      * Creates new form EditTechnicianAccount
      */
-    public EditTechnicianAccount(int technicianId, String techPersonal) {
+    public EditTechnicianAccount(int managerId,int technicianId, String techPersonal) {
+        loggedInManagerId = managerId;
         this.technicianId = technicianId;
         this.techPersonal = techPersonal;
         TechnicianController technicianController = new TechnicianController();
@@ -164,6 +166,7 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSaveEditTechnicianAcc, lblTechnicianCurrentPwd, lblTechnicianCurrentUsername, lblTechnicianNewPwd, lblTechnicianNewUsername, tbxTechnicianCurrentPwd, tbxTechnicianCurrentUsername, tbxTechnicianNewPwd, tbxTechnicianNewUsername});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveEditTechnicianAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditTechnicianAccActionPerformed
@@ -175,12 +178,24 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
         }
+        else if(inputtedUsername.isEmpty() || inputtedPassword.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
+        }
         else
         {
             technicianController.editTechnicianAcc(technicianId,inputtedUsername,inputtedPassword);
             JOptionPane.showMessageDialog(this, "Technician Edit Success");
-            TechnicianDashboard td = new TechnicianDashboard(technicianId);
-            td.setVisible(true);
+            if (techPersonal.equals("null")) 
+            {
+                EditTechnicianSelection et = new EditTechnicianSelection(loggedInManagerId);
+                et.setVisible(true);
+            }
+            else 
+            {
+                TechnicianDashboard td = new TechnicianDashboard(technicianId);
+                td.setVisible(true);
+            }
             setVisible(false);
             dispose();
         }
@@ -188,18 +203,18 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         
-        System.out.println(techPersonal);
-        if ("techPersonal".equals(techPersonal)) {
-            EditTechnicianSelection et = new EditTechnicianSelection();
+        if (techPersonal.equals("null")) 
+        {
+            EditTechnicianSelection et = new EditTechnicianSelection(loggedInManagerId);
             et.setVisible(true);
-            setVisible(false);
-            dispose(); 
-        } else {
+        }
+        else 
+        {
             TechnicianDashboard td = new TechnicianDashboard(technicianId);
             td.setVisible(true);
-            setVisible(false);
-            dispose();
         }
+        setVisible(false);
+        dispose();
 
     }//GEN-LAST:event_backActionPerformed
 

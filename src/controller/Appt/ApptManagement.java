@@ -16,7 +16,8 @@ public class ApptManagement extends javax.swing.JFrame {
     /**
      * Creates new form ApptManagement
      */
-    public ApptManagement() {
+    public ApptManagement(int managerId) {
+        loggedInManagerid = managerId;
         initComponents();
     }
 
@@ -148,29 +149,30 @@ public class ApptManagement extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        AddApt i = new AddApt();
+        AddApt i = new AddApt(loggedInManagerid);
         i.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        ViewApt vm = new ViewApt();
+        ViewApt vm = new ViewApt(loggedInManagerid);
         vm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        DeleteApt d = new DeleteApt();
+        DeleteApt d = new DeleteApt(loggedInManagerid);
         d.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
-        UpdateApt mi = new UpdateApt();
+        UpdateApt mi = new UpdateApt(loggedInManagerid);
         mi.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modifyButtonActionPerformed
@@ -212,7 +214,7 @@ public class ApptManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ApptManagement().setVisible(true);
+//                new ApptManagement().setVisible(true);
             }
         });
     }

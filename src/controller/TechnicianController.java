@@ -60,4 +60,9 @@ public class TechnicianController {
         return technicianDetails;
     }
     
+    public boolean isTechnicianDatabaseEmpty()
+    {
+        return getAllTechnicianList().size() == 0;
+    }
+    
 }

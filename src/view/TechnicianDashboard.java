@@ -170,6 +170,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillingButtonActionPerformed
@@ -181,7 +182,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     private void btnEditMyAccActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformedActionPerformed
         setVisible(false);
         dispose();
-        EditTechnicianAccount editTechnicianAcc = new EditTechnicianAccount(loggedTechID,"techpersonal");
+        EditTechnicianAccount editTechnicianAcc = new EditTechnicianAccount(loggedTechID,0,"techpersonal");
         editTechnicianAcc.setVisible(true);
     }
 

@@ -8,19 +8,20 @@ import controller.CustomerController;
 import controller.UserController;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import view.EditCustomerSelection;
 /**
  *
  * @author User
  */
 public class EditCustomerAccount extends javax.swing.JFrame {
-    private int customerId;
+    private int loggedInManagerId;
     /**
      * Creates new form EditCustomerAccount
      */
-    public EditCustomerAccount(int customerId) {
-        this.customerId = customerId;
+    public EditCustomerAccount(int managerId) {
+        this.loggedInManagerId = managerId;
         CustomerController customerController = new CustomerController();
-        HashMap<String, Object> technicianDetails = customerController.getCustomerDetails(this.customerId);
+        HashMap<String, Object> technicianDetails = customerController.getCustomerDetails(this.loggedInManagerId);
         initComponents();
         tbxCustomerCurrentUsername.setText(technicianDetails.get("username").toString());
         tbxCustomerCurrentPwd.setText(technicianDetails.get("password").toString());
@@ -45,6 +46,7 @@ public class EditCustomerAccount extends javax.swing.JFrame {
         lblCustomerNewUsername = new javax.swing.JLabel();
         tbxCustomerCurrentPwd = new javax.swing.JTextField();
         lblLoginUsername1 = new javax.swing.JLabel();
+        btnEditCustomerBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,13 @@ public class EditCustomerAccount extends javax.swing.JFrame {
         lblLoginUsername1.setText("EDIT CUSTOMER PROFILE");
         lblLoginUsername1.setAlignmentY(0.0F);
 
+        btnEditCustomerBack.setText("BACK");
+        btnEditCustomerBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCustomerBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,7 +120,10 @@ public class EditCustomerAccount extends javax.swing.JFrame {
                                     .addComponent(tbxCustomerCurrentPwd)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(329, 329, 329)
-                        .addComponent(lblLoginUsername1)))
+                        .addComponent(lblLoginUsername1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(btnEditCustomerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
 
@@ -124,12 +136,9 @@ public class EditCustomerAccount extends javax.swing.JFrame {
                 .addComponent(lblLoginUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCustomerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tbxCustomerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addComponent(lblCustomerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbxCustomerCurrentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCustomerCurrentPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbxCustomerCurrentPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,28 +152,46 @@ public class EditCustomerAccount extends javax.swing.JFrame {
                     .addComponent(tbxCustomerNewPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(btnSaveEditCustomerAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnEditCustomerBack)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblCustomerCurrentPwd, lblCustomerCurrentUsername, lblCustomerNewPwd, lblCustomerNewUsername, tbxCustomerCurrentPwd, tbxCustomerNewPwd, tbxCustomerNewUsername});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveEditCustomerAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditCustomerAccActionPerformed
         String inputtedUsername = tbxCustomerNewUsername.getText();
         String inputtedPassword = tbxCustomerNewPwd.getText();
-        CustomerController customerController = new CustomerController();
         UserController userController = new UserController();
         if(userController.hasUserExisted(inputtedUsername))
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
         }
+        else if(inputtedUsername.isEmpty() || inputtedPassword.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
+        }
         else
         {
-             customerController.editCustomerAcc(customerId,inputtedUsername,inputtedPassword);
+            CustomerController customerController = new CustomerController();
+            customerController.editCustomerAcc(loggedInManagerId,inputtedUsername,inputtedPassword);
+            EditCustomerSelection editCustomerSelection = new EditCustomerSelection(loggedInManagerId);
+            editCustomerSelection.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_btnSaveEditCustomerAccActionPerformed
+
+    private void btnEditCustomerBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerBackActionPerformed
+        EditCustomerSelection editCustomerSelection = new EditCustomerSelection(loggedInManagerId);
+        editCustomerSelection.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnEditCustomerBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +229,7 @@ public class EditCustomerAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditCustomerBack;
     private javax.swing.JButton btnSaveEditCustomerAcc;
     private javax.swing.JLabel lblCustomerCurrentPwd;
     private javax.swing.JLabel lblCustomerCurrentUsername;

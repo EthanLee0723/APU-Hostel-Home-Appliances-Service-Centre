@@ -30,10 +30,12 @@ public class UpdateApt extends javax.swing.JFrame {
     private static Map<String, String[]> detailsMap = new HashMap<>();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    private int loggedInManagerId;
     /**
      * Creates new form ModifyAppt
      */
-    public UpdateApt() {
+    public UpdateApt(int managerId) {
+        loggedInManagerId = managerId;
         ArrayList<HashMap<String, Object>> allTechnicians;
         ArrayList<HashMap<String, Object>> allCustomers;
         TechnicianController technicianController = new TechnicianController();
@@ -297,12 +299,9 @@ public class UpdateApt extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,6 +325,7 @@ public class UpdateApt extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void mPaymentStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPaymentStatusActionPerformed
@@ -532,7 +532,7 @@ public class UpdateApt extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        ApptManagement im = new ApptManagement();
+        ApptManagement im = new ApptManagement(loggedInManagerId);
         im.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButton1ActionPerformed
@@ -571,7 +571,7 @@ public class UpdateApt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateApt().setVisible(true);
+//                new UpdateApt().setVisible(true);
             }
         });
     }

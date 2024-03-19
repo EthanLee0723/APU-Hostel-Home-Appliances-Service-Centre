@@ -12,8 +12,10 @@ import javax.swing.table.DefaultTableModel;
 public class ViewApt extends javax.swing.JFrame {
 
     private final ApptServiceController apptService;
+    private int loggedInManagerId;
 
-    public ViewApt() {
+    public ViewApt(int managerId) {
+        loggedInManagerId = managerId;
         initComponents();
         this.apptService = new ApptServiceController();
         performFileRelatedTask();
@@ -119,10 +121,11 @@ public class ViewApt extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        ApptManagement im = new ApptManagement();
+        ApptManagement im = new ApptManagement(loggedInManagerId);
         im.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed

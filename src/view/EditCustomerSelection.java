@@ -20,7 +20,8 @@ public class EditCustomerSelection extends javax.swing.JFrame {
     /**
      * Creates new form EditCustomerSelection
      */
-    public EditCustomerSelection() {
+    public EditCustomerSelection(int managerId) {
+        loggedInManagerid = managerId;
         CustomerController customerController = new CustomerController();
         allCustomers = customerController.getAllCustomerList();
         String [] customerModel = new String[allCustomers.size()];
@@ -122,6 +123,7 @@ public class EditCustomerSelection extends javax.swing.JFrame {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combobxEditCustomerSelection, lblEditCustomerSelection});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditCustomerSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerSelectionActionPerformed
@@ -169,7 +171,7 @@ public class EditCustomerSelection extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditCustomerSelection().setVisible(true);
+//                new EditCustomerSelection().setVisible(true);
             }
         });
     }

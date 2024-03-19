@@ -16,10 +16,11 @@ public class CreateCustomer extends javax.swing.JFrame {
     /**
      * Creates new form CreateCustomer
      */
-    public CreateCustomer() {
+    public CreateCustomer(int managerId) {
+        loggedInManagerid = managerId;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,6 +124,7 @@ public class CreateCustomer extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateCustomerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerCreateActionPerformed
@@ -133,6 +135,10 @@ public class CreateCustomer extends javax.swing.JFrame {
         if(userController.hasUserExisted(inputtedUsername))
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
+        }
+        else if(inputtedUsername.isEmpty() || inputtedPwd.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
         }
         else
         {
@@ -177,7 +183,7 @@ public class CreateCustomer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateCustomer().setVisible(true);
+//                new CreateCustomer().setVisible(true);
             }
         });
     }

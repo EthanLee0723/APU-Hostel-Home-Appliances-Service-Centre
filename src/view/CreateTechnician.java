@@ -7,6 +7,7 @@ package view;
 import controller.TechnicianController;
 import controller.UserController;
 import javax.swing.JOptionPane;
+import view.ManagerDashboard;
 /**
  *
  * @author User
@@ -16,7 +17,8 @@ public class CreateTechnician extends javax.swing.JFrame {
     /**
      * Creates new form CreateTechnician
      */
-    public CreateTechnician() {
+    public CreateTechnician(int managerId) {
+        loggedInManagerid = managerId;
         initComponents();
     }
 
@@ -124,6 +126,7 @@ public class CreateTechnician extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
@@ -135,9 +138,17 @@ public class CreateTechnician extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
         }
+        else if(inputtedUsername.isEmpty() || inputtedPassword.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
+        }
         else
         {
-             technicianController.createNewTechnician(inputtedUsername, inputtedPassword);
+            technicianController.createNewTechnician(inputtedUsername, inputtedPassword);
+            ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerid);
+            managerDashboard.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
@@ -178,7 +189,7 @@ public class CreateTechnician extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateTechnician().setVisible(true);
+//                new CreateTechnician().setVisible(true);
             }
         });
     }

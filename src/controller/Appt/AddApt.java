@@ -25,13 +25,15 @@ import java.util.List;
  */
 public class AddApt extends javax.swing.JFrame {
 
+    private int loggedInManagerId;
     private final ApptServiceController apptService; 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
     /**
      * Creates new form AddApt
      */
-    public AddApt() {
+    public AddApt(int managerId) {
+        loggedInManagerId = managerId;
         ArrayList<HashMap<String, Object>> allTechnicians;
         ArrayList<HashMap<String, Object>> allCustomers;
         TechnicianController technicianController = new TechnicianController();
@@ -296,6 +298,7 @@ public class AddApt extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private boolean isValidDate(String date) {
@@ -413,7 +416,7 @@ public class AddApt extends javax.swing.JFrame {
     }//GEN-LAST:event_apptTimeFieldActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        ApptManagement im = new ApptManagement();
+        ApptManagement im = new ApptManagement(loggedInManagerId);
         im.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
@@ -456,7 +459,7 @@ public class AddApt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddApt().setVisible(true);
+//                new AddApt().setVisible(true);
             }
         });
     }

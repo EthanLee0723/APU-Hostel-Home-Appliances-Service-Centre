@@ -191,6 +191,10 @@ public class EditManagerAccount extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"The username has already existed, please try again.");
         }
+        else if(inputtedUsername.isEmpty() || inputtedPassword.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this,"Both username and password are required to create an account");
+        }
         else
         {
             managerController.editManagerAcc(loggedInManagerId,inputtedUsername,inputtedPassword);
