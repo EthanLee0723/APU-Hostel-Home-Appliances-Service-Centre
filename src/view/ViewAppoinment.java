@@ -106,6 +106,7 @@ public class ViewAppoinment extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    //show out appointment data with using techid, array to pop up all the messages
     private void performFileRelatedTask(int techid) {
         loggedTechID = techid;
         TechnicianController managerController = new TechnicianController();

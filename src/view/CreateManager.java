@@ -131,6 +131,7 @@ public class CreateManager extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //create manager function and validation
     private void btnCreateManagerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerCreateActionPerformed
         String inputtedUsername = tbxCreateManagerUsername.getText();
         String inputtedPwd = tbxCreateManagerPwd.getText();
@@ -150,6 +151,7 @@ public class CreateManager extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateManagerCreateActionPerformed
 
+    //back button
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         ManagerDashboard md = new ManagerDashboard(loggedInManagerid);
         md.setVisible(true);

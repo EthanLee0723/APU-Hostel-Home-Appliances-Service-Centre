@@ -51,6 +51,11 @@ public class Login extends javax.swing.JFrame {
 
         txtLoginUsername.setAlignmentY(0.0F);
         txtLoginUsername.setPreferredSize(new java.awt.Dimension(300, 50));
+        txtLoginUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginUsernameActionPerformed(evt);
+            }
+        });
 
         lblLoginPwd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblLoginPwd.setText("PASSWORD");
@@ -130,6 +135,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //  login button and validation
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String inputtedUsername = txtLoginUsername.getText();
         String inputtedPwd = pwdTxtLoginPwd.getText();
@@ -148,6 +154,10 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtLoginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginUsernameActionPerformed
 
     /**
      * @param args the command line arguments

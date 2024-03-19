@@ -127,6 +127,7 @@ public class CreateCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //create customer button and validation
     private void btnCreateCustomerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerCreateActionPerformed
         String inputtedUsername = tbxCreateCustomerUsername.getText();
         String inputtedPwd = tbxCreateCustomerPwd.getText();
@@ -146,6 +147,7 @@ public class CreateCustomer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateCustomerCreateActionPerformed
 
+    //back button to home page
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         ManagerDashboard md = new ManagerDashboard(loggedInManagerid);
         md.setVisible(true);

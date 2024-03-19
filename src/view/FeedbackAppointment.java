@@ -16,6 +16,7 @@ public class FeedbackAppointment extends javax.swing.JFrame {
     /**
      * Creates new form FeedbackAppointment
      */
+    
     public FeedbackAppointment(int techid) {
         initComponents();
         this.apptService = new ApptServiceController();
@@ -106,6 +107,7 @@ public class FeedbackAppointment extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    //get the feedback appointment data with using technician id
     private void performFileRelatedTask(int techid) {
         loggedTechID = techid;
         TechnicianController managerController = new TechnicianController();

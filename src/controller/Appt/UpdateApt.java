@@ -34,6 +34,7 @@ public class UpdateApt extends javax.swing.JFrame {
     /**
      * Creates new form ModifyAppt
      */
+    //get the list of technician and customer
     public UpdateApt(int managerId) {
         loggedInManagerId = managerId;
         ArrayList<HashMap<String, Object>> allTechnicians;
@@ -332,6 +333,7 @@ public class UpdateApt extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mPaymentStatusActionPerformed
 
+    //read the data to show table data
     private static String[] readDetailsFromFile(String filePath, String selectedName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -347,6 +349,7 @@ public class UpdateApt extends javax.swing.JFrame {
         return null; // Name not found or error occurred
     }
     
+    //find the specific account and auto pump in data
     private void performFileRelatedTask() {
         modText.removeAllItems();
         modText.addItem("");
@@ -413,6 +416,7 @@ public class UpdateApt extends javax.swing.JFrame {
         
     }
     
+    //validation
     private boolean isValidDate(String date) {
         dateFormat.setLenient(false);
         try {
@@ -423,6 +427,7 @@ public class UpdateApt extends javax.swing.JFrame {
         }
     }
     
+    //validation time
     private boolean isValidTime(String time) {
         // Validate time format
         if (!time.matches("\\d{2}:\\d{2}(AM|PM|am|pm)")) {
@@ -431,6 +436,7 @@ public class UpdateApt extends javax.swing.JFrame {
         return true;
     }
     
+    //validation duplicate name
     private boolean isDuplicateName(String name) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("storage/appointment.txt"));
@@ -450,6 +456,7 @@ public class UpdateApt extends javax.swing.JFrame {
         return false; // No duplicate names found
     }
     
+    //update button and use validation to filter the input
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         String name = (String) modText.getSelectedItem();
         String mName = modName.getText();

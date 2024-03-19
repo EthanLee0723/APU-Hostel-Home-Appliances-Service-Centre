@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class UserController {
+    //user existed function
     public boolean hasUserExisted(String checkUsername)
     {
        Users users = new Users();

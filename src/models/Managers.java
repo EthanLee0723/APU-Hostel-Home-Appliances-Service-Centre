@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  * @author User
  */
+//manager variables , get and set data
 public class Managers{
     private File file = new File("src/database/Managers.txt");
     private int id;

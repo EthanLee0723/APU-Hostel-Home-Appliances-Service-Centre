@@ -28,6 +28,7 @@ public class ApptServiceController {
     public ApptServiceController() {
     }
 
+    //get the data
     public List<Appt> getAll() {
         List<Appt> appts = new ArrayList<>();
         try (Scanner scanner = new Scanner(new FileInputStream("storage/appointment.txt"))) {
@@ -47,6 +48,7 @@ public class ApptServiceController {
         return appts;
     }
     
+    //get data with technician name
     public List<Appt> getAllbyTechnicianName(String name) {
         List<Appt> appts = new ArrayList<>();
         try (Scanner scanner = new Scanner(new FileInputStream("storage/appointment.txt"))) {
@@ -68,6 +70,7 @@ public class ApptServiceController {
         return appts;
     }
     
+    //get appointment by index
     public Appt getApptByIndex(int index) {
         List<Appt> listOfAppt = getAll();
 
@@ -78,6 +81,7 @@ public class ApptServiceController {
         return null;
     }
 
+    //create appoint function and save in text file
     public void create(Appt appt) {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("storage/appointment.txt", true))) {
             pw.println(appt.getName() + "," + appt.getDate() + "," + appt.getTime()+ "," + appt.getServiceType()+ "," + appt.getAmount()+ "," + appt.getPaymentStatus()+ "," + appt.getTechnician()+ "," + appt.getCustomerName()+ "," + appt.getFeedback());
@@ -86,6 +90,7 @@ public class ApptServiceController {
         }
     }
 
+    //delete function from text file
     public synchronized boolean delete(String name) {
 
         List<Appt> apptList = getAll();
@@ -124,6 +129,7 @@ public class ApptServiceController {
         return true;
     }
 
+    //update function from text file
     public synchronized boolean update(String srcName, Appt updatedAppt) {
         List<Appt> apptList = new ArrayList<>();
 
@@ -175,6 +181,7 @@ public class ApptServiceController {
         return true;
     }
 
+    //reduce appointment quantity by appointment name
     public synchronized void reduceApptQuantityByApptName(String apptName, int reduceNumber) {
         List<Appt> apptList = getAll();
 

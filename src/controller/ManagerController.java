@@ -24,6 +24,7 @@ public class ManagerController {
         return managerDetails;
     }
     
+    //create account
     public void createManager(String newUsername,String newPassword)
     {   
         Managers newManager = new Managers();
@@ -32,6 +33,7 @@ public class ManagerController {
         newManager.createNewManager();
     }
     
+    //edit manager account
     public void editManagerAcc(int managerId,String editedUsername,String editedPwd)
     {
         Managers manager = new Managers();

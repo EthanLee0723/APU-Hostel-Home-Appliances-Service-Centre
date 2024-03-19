@@ -9,6 +9,7 @@ package models;
  *
  * @author GENJI
  */
+//Billing variables
 public class Biling {
     private String appt_name;
     private String date;
@@ -26,6 +27,7 @@ public class Biling {
         this.recipient = recipient;
     }
     
+    //get and set data
     public String getApptname() {
         return appt_name;
     }

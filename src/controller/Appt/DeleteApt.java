@@ -172,6 +172,7 @@ public class DeleteApt extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dlttextActionPerformed
 
+    //get the specific name from array
     private void performFileRelatedTask() {
         String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name", "Feedback"};
          // Create DefaultTableModel with column names
@@ -201,6 +202,7 @@ public class DeleteApt extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    //delete the data and validation
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         String name = dlttext.getText();
 

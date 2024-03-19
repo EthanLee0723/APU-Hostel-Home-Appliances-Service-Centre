@@ -18,6 +18,8 @@ public class EditManagerAccount extends javax.swing.JFrame {
     /**
      * Creates new form EditManagerAccount
      */
+    
+    //edit customer account with managerID
     public EditManagerAccount(int managerId){
         loggedInManagerId = managerId;
         ManagerController managerController = new ManagerController();
@@ -182,6 +184,7 @@ public class EditManagerAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // edit manager button
     private void btnSaveEditManagerAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditManagerAccActionPerformed
         String inputtedUsername = tbxEditManagerNewUsername.getText();
         String inputtedPassword = tbxEditManagerNewPassword.getText();
@@ -205,6 +208,7 @@ public class EditManagerAccount extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveEditManagerAccActionPerformed
 
+    //back button
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         ManagerDashboard md = new ManagerDashboard(loggedInManagerId);
         md.setVisible(true);

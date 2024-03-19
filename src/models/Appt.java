@@ -11,6 +11,7 @@ package models;
  */
 public class Appt {
     
+    //Appointment variable
     private String name;
     private String date;
     private String feedback;
@@ -33,6 +34,7 @@ public class Appt {
         this.paymentStatus = paymentStatus;
     }
     
+    // Get and Set Data
     public String getName() {
         return name;
     }

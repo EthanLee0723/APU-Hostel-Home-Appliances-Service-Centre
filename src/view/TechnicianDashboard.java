@@ -173,12 +173,14 @@ public class TechnicianDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //view billing
     private void BillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillingButtonActionPerformed
         BillingManagement vd = new BillingManagement(loggedTechID);
         vd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BillingButtonActionPerformed
 
+    //view and edit personal profile
     private void btnEditMyAccActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformedActionPerformed
         setVisible(false);
         dispose();
@@ -191,6 +193,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditMyAccActionPerformedActionPerformed
 
+    //view appointment
     private void appoinmentViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appoinmentViewButtonActionPerformed
          setVisible(false);
          dispose();
@@ -206,6 +209,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3AncestorAdded
 
+    //logout
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Login vd = new Login();
         vd.setVisible(true);
@@ -213,6 +217,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //view feedback
     private void viewFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFeedbackActionPerformed
          setVisible(false);
          dispose();

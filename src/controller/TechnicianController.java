@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class TechnicianController {
+    //crate new technician account
     public void createNewTechnician(String newUsername, String newPassword)
     {
         Technicians newManager = new Technicians();
@@ -22,6 +23,7 @@ public class TechnicianController {
         newManager.createNewTechnican();
     }
     
+    //edit technician account
     public void editTechnicianAcc(int technicianId,String editedUsername,String editedPwd)
     {
         Technicians technician = new Technicians();
@@ -31,6 +33,7 @@ public class TechnicianController {
         technician.editTechnician();
     }
     
+    //get all list of technician
     public ArrayList<HashMap<String, Object>> getAllTechnicianList()
     {
         Technicians technicians = new Technicians();
@@ -50,6 +53,7 @@ public class TechnicianController {
         return mapAllTechnicians;
     }
     
+    //get technician details
     public HashMap<String, Object> getTechnicianDetails(int technicianId)
     {
         Technicians technicians = new Technicians(technicianId);

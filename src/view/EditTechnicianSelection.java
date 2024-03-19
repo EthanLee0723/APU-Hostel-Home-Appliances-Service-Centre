@@ -19,6 +19,7 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
     /**
      * Creates new form EditTechnicianSelection
      */
+    //array to get the technician account
     public EditTechnicianSelection(int managerId) {
         loggedInManagerid = managerId;
         TechnicianController technicianController = new TechnicianController();
@@ -120,6 +121,7 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //jump to edit technican page
     private void btnEditTechnicianSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianSelectionActionPerformed
         int selectedInd = combobxEditTechnicianSelection.getSelectedIndex();
         EditTechnicianAccount editTechnnicianAccount = new EditTechnicianAccount(Integer.parseInt(allTechnicians.get(selectedInd).get("id").toString()),loggedInManagerid,"null");
@@ -128,6 +130,7 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnEditTechnicianSelectionActionPerformed
 
+    //back button
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         ManagerDashboard md = new ManagerDashboard(loggedInManagerid);
         md.setVisible(true);

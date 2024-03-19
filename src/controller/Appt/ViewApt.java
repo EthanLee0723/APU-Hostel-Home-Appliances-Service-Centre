@@ -124,6 +124,7 @@ public class ViewApt extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //back button
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         ApptManagement im = new ApptManagement(loggedInManagerId);
         im.setVisible(true);
@@ -133,6 +134,7 @@ public class ViewApt extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    //list out the data from array
     private void performFileRelatedTask() {
         String[] columnNames = {"Name", "Date", "Time", "Service Type", "Amount", "Payment Status", "Technician Name", "Customer Name", "Feedback"};
          // Create DefaultTableModel with column names

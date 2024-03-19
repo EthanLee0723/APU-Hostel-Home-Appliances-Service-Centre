@@ -23,6 +23,7 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
     /**
      * Creates new form EditTechnicianAccount
      */
+     //edit technician account with technicianID
     public EditTechnicianAccount(int managerId,int technicianId, String techPersonal) {
         loggedInManagerId = managerId;
         this.technicianId = technicianId;
@@ -169,6 +170,8 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //save edited technician account and validation
     private void btnSaveEditTechnicianAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditTechnicianAccActionPerformed
         String inputtedUsername = tbxTechnicianNewUsername.getText();
         String inputtedPassword = tbxTechnicianNewPwd.getText();
@@ -201,6 +204,7 @@ public class EditTechnicianAccount extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveEditTechnicianAccActionPerformed
 
+    //back
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         
         if (techPersonal.equals("null")) 
