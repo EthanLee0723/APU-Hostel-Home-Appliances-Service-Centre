@@ -15,6 +15,8 @@ import models.Customers;
  * @author User
  */
 public class CustomerController {
+    
+    //create customer function
     public void createCustomer(String newUsername,String newPassword)
     {   
         Customers newCustomer = new Customers();
@@ -23,6 +25,7 @@ public class CustomerController {
         newCustomer.createNewCustomer();
     }
     
+    //edit customer account function
     public void editCustomerAcc(int customerId,String editedUsername,String editedPwd)
     {
         Customers customer = new Customers();
@@ -32,6 +35,7 @@ public class CustomerController {
         customer.editCustomer();
     }
     
+    //get customer data
     public ArrayList<HashMap<String, Object>> getAllCustomerList()
     {
         Customers customers = new Customers();
@@ -51,6 +55,7 @@ public class CustomerController {
         return mapAllCustomers;
     }
     
+    //get customer details
     public HashMap<String, Object> getCustomerDetails(int customerId)
     {
         Customers customers = new Customers(customerId);

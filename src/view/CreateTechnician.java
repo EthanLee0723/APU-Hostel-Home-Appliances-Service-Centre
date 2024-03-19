@@ -126,6 +126,7 @@ public class CreateTechnician extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //crate technician button and validation
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
         String inputtedUsername =  tbxCreateTechnicianUsername.getText();
         String inputtedPassword = tbxCreateTechnicianPwd.getText();
@@ -141,6 +142,7 @@ public class CreateTechnician extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
+    //back button
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         ManagerDashboard md = new ManagerDashboard(loggedInManagerid);
         md.setVisible(true);

@@ -16,6 +16,7 @@ import java.util.Scanner;
  *
  * @author User
  */
+//customer variables, get and set data
 public class Customers {
     private File file = new File("src/database/Customers.txt");
     private int id;

@@ -30,6 +30,7 @@ public class BillingServiceController {
     public BillingServiceController() {
     }
     
+    //get all data
     public List<Biling> getAll() {
         List<Biling> labourList = new ArrayList<>();
         try (Scanner scanner = new Scanner(new FileInputStream("storage/Billing.txt"))) {
@@ -49,6 +50,7 @@ public class BillingServiceController {
         return labourList;
     }
     
+    //create function to text file
     public void create(Biling biling) {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("storage/Billing.txt", true))) {
             pw.println(biling.getApptname() + "," + biling.getDate() + "," + biling.getAmount()+ "," + biling.getName()+ "," + biling.getBankname()+ "," + biling.getRecipient());

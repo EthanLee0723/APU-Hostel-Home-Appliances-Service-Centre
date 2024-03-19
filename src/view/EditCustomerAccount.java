@@ -17,6 +17,8 @@ public class EditCustomerAccount extends javax.swing.JFrame {
     /**
      * Creates new form EditCustomerAccount
      */
+    
+    //edit customer button and find the specific account with customerID
     public EditCustomerAccount(int customerId) {
         this.customerId = customerId;
         CustomerController customerController = new CustomerController();

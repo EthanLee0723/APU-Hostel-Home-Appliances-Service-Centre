@@ -179,6 +179,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //logout
     private void btnManagerLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagerLogoutActionPerformed
         Login login = new Login();
         login.setVisible(true);
@@ -186,12 +187,14 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnManagerLogoutActionPerformed
 
+    //appointment management
     private void apptManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apptManagementButtonActionPerformed
         ApptManagement im = new ApptManagement();
         im.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_apptManagementButtonActionPerformed
 
+    //edit customer
     private void btnEditCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerDetailsActionPerformed
         EditCustomerSelection editCustomerSelection = new EditCustomerSelection();
         editCustomerSelection.setVisible(true);
@@ -199,6 +202,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnEditCustomerDetailsActionPerformed
 
+    //create customer 
     private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
         CreateCustomer createCustomer = new CreateCustomer();
         createCustomer.setVisible(true);
@@ -206,6 +210,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
 
+    //edit technician account page
     private void btnEditTechnicianDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianDetailsActionPerformed
         EditTechnicianSelection editTechnicianSelection = new EditTechnicianSelection();
         editTechnicianSelection.setVisible(true);
@@ -213,6 +218,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnEditTechnicianDetailsActionPerformed
 
+    //create technician account page
     private void btnCreateTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTechnicianActionPerformed
         CreateTechnician createTechnician = new CreateTechnician();
         createTechnician.setVisible(true);
@@ -220,6 +226,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCreateTechnicianActionPerformed
 
+    //jump to create manager page
     private void btnCreateManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManagerActionPerformed
         CreateManager createManager = new CreateManager(loggedInManagerid);
         createManager.setVisible(true);
@@ -227,6 +234,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCreateManagerActionPerformed
 
+    //jump to edit personal account
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
         setVisible(false);
         dispose();

@@ -20,6 +20,8 @@ public class EditCustomerSelection extends javax.swing.JFrame {
     /**
      * Creates new form EditCustomerSelection
      */
+    
+    //customer selection function to use array to find the specific username
     public EditCustomerSelection() {
         CustomerController customerController = new CustomerController();
         allCustomers = customerController.getAllCustomerList();
@@ -124,6 +126,7 @@ public class EditCustomerSelection extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //jump to customer edit page
     private void btnEditCustomerSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerSelectionActionPerformed
         int selectedInd = combobxEditCustomerSelection.getSelectedIndex();
         EditCustomerAccount editCustomerAccount = new EditCustomerAccount(Integer.parseInt(allCustomers.get(selectedInd).get("id").toString()));

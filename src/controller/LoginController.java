@@ -23,6 +23,7 @@ public class LoginController {
         
     }
     
+    //search match manager data with username and password
     public boolean isManagerLoginDetailsMatch(String username,String password)
     {
         Managers managers = new Managers();
@@ -44,6 +45,7 @@ public class LoginController {
         return false;
     }
     
+    //search matching technician account
     public boolean isTechnicianLoginDetailsMatch(String username,String password)
     {
         Technicians technician = new Technicians();
@@ -65,6 +67,7 @@ public class LoginController {
         return false;
     }
     
+    //search matching customer account
     public boolean isCustomerLoginDetailsMatch(String username,String password)
     {
         Customers customers = new Customers();
@@ -86,6 +89,7 @@ public class LoginController {
         return false;
     }
     
+    //search matching user account
     public String userLogIn(String username,String password,Login login)
     {
         Managers manager = new Managers(username,password);
@@ -120,6 +124,7 @@ public class LoginController {
         return loginStatus;
     }
     
+    //generate user default account
     public void generateDefaultUserFile()
     {
         Managers manager = new Managers();

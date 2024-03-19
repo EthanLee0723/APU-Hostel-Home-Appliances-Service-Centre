@@ -14,6 +14,7 @@ import models.Technicians;
  *
  * @author User
  */
+// user variables, get and set data
 public class Users{
     private int id;
     private String username;

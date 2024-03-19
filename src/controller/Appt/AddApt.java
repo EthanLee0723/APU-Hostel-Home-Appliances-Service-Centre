@@ -31,6 +31,7 @@ public class AddApt extends javax.swing.JFrame {
     /**
      * Creates new form AddApt
      */
+    //function to get all list of technician and customer
     public AddApt() {
         ArrayList<HashMap<String, Object>> allTechnicians;
         ArrayList<HashMap<String, Object>> allCustomers;
@@ -298,6 +299,7 @@ public class AddApt extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //validation for date
     private boolean isValidDate(String date) {
         dateFormat.setLenient(false);
         try {
@@ -308,6 +310,7 @@ public class AddApt extends javax.swing.JFrame {
         }
     }
     
+    //validation for time
     private boolean isValidTime(String time) {
         // Validate time format
         if (!time.matches("\\d{2}:\\d{2}(AM|PM|am|pm)")) {
@@ -315,7 +318,7 @@ public class AddApt extends javax.swing.JFrame {
         }
         return true;
     }
-    
+    //validation function for duplicate name
     private boolean isDuplicateName(String name) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("storage/appointment.txt"));
@@ -335,6 +338,7 @@ public class AddApt extends javax.swing.JFrame {
         return false; // No duplicate names found
     }
     
+    //save data and validation
     private void comfirmpaymentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmpaymentbuttonActionPerformed
 
         String name = apptNameField.getText();
@@ -412,6 +416,7 @@ public class AddApt extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_apptTimeFieldActionPerformed
 
+    //back button
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         ApptManagement im = new ApptManagement();
         im.setVisible(true);

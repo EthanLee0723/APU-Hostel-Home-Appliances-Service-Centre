@@ -30,12 +30,14 @@ public class BillingManagement extends javax.swing.JFrame {
     private final BillingServiceController bilingService;
     private final ApptServiceController apptService;
     private static Map<String, String[]> detailsMap = new HashMap<>();
+//    validation format for date and time
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
     private int loggedTechID;
     /**
      * Creates new form BillingManagement
      */
+//    get billingservice id and apptservice id from each controller;
     public BillingManagement(int techid) {
         initComponents();
         this.bilingService = new BillingServiceController();
@@ -302,6 +304,7 @@ public class BillingManagement extends javax.swing.JFrame {
          // Create DefaultTableModel with column names
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         
+//        foreach/forloop to get the specific the data from txt file
         apptService.getAll().forEach((appt) -> {
             model.addRow(new Object[]{
                 appt.getName(),
@@ -369,6 +372,7 @@ public class BillingManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NAMEFIELDActionPerformed
 
+//    back page button
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         TechnicianDashboard td = new TechnicianDashboard(loggedTechID);
         td.setVisible(true);
@@ -380,6 +384,7 @@ public class BillingManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AMOUNTFIELDActionPerformed
 
+//    submit button
     private void comfirmpaymentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmpaymentbuttonActionPerformed
         TechnicianController managerController = new TechnicianController();
         HashMap<String, Object> techDeatils = managerController.getTechnicianDetails(loggedTechID);
@@ -400,16 +405,19 @@ public class BillingManagement extends javax.swing.JFrame {
         //Appointment
 //        String paymentStatus = "active";
 
+//validation for appointment name
         if(appt_name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Appointment Name cannot be empty");
             return;
         }
 
+        // validation for date
         if(date.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Date cannot be empty");
             return;
         }
 
+        //validation for amount
         if(!amount.isEmpty()){
             if (!amount.matches("\\d+(\\.\\d+)?")) {
                 JOptionPane.showMessageDialog(this, "Please enter a valid amount for the appointment");
@@ -423,16 +431,19 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         }
 
+        //validation for name
         if(name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name cannot be empty");
             return;
         }
 
+        //validation for bank nae
         if(bankname.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bank Name cannot be empty");
             return;
         }
 
+        //validation for recipeint
         if(recipient.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Recipient cannot be empty");
             return;
