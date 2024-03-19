@@ -184,7 +184,7 @@ public class TechnicianDashboard extends javax.swing.JFrame {
     private void btnEditMyAccActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformedActionPerformed
         setVisible(false);
         dispose();
-        EditTechnicianAccount editTechnicianAcc = new EditTechnicianAccount(loggedTechID,0,"techpersonal");
+        EditTechnicianAccount editTechnicianAcc = new EditTechnicianAccount(0,loggedTechID,"techpersonal");
         editTechnicianAcc.setVisible(true);
     }
 
