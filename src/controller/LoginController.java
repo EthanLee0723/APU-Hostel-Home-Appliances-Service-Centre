@@ -99,6 +99,7 @@ public class LoginController {
         if(manager.getId() != 0)
         {
             JOptionPane.showMessageDialog(null, "Manager Login Sucess: " + manager.getUsername());
+            System.out.println(manager.getId());
             ManagerDashboard managerDashboard = new ManagerDashboard(manager.getId());
             login.setVisible(false);
             login.dispose();

@@ -124,7 +124,7 @@ public class EditTechnicianSelection extends javax.swing.JFrame {
     //jump to edit technican page
     private void btnEditTechnicianSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTechnicianSelectionActionPerformed
         int selectedInd = combobxEditTechnicianSelection.getSelectedIndex();
-        EditTechnicianAccount editTechnnicianAccount = new EditTechnicianAccount(Integer.parseInt(allTechnicians.get(selectedInd).get("id").toString()),loggedInManagerid,"null");
+        EditTechnicianAccount editTechnnicianAccount = new EditTechnicianAccount(loggedInManagerid,Integer.parseInt(allTechnicians.get(selectedInd).get("id").toString()),"null");
         editTechnnicianAccount.setVisible(true);
         setVisible(false);
         dispose();
