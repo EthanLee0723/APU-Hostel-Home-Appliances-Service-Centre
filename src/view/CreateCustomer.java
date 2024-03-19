@@ -64,7 +64,7 @@ public class CreateCustomer extends javax.swing.JFrame {
 
         lblLoginUsername1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblLoginUsername1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblLoginUsername1.setText("EDIT CUSTOMER PROFILE");
+        lblLoginUsername1.setText("CREATE NEW CUSTOMER");
         lblLoginUsername1.setAlignmentY(0.0F);
 
         back.setText("BACK");
@@ -101,7 +101,7 @@ public class CreateCustomer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(back)))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +143,11 @@ public class CreateCustomer extends javax.swing.JFrame {
         }
         else
         {
-             customerController.createCustomer(inputtedUsername, inputtedPwd);
+            customerController.createCustomer(inputtedUsername, inputtedPwd);
+            ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerid);
+            managerDashboard.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_btnCreateCustomerCreateActionPerformed
 

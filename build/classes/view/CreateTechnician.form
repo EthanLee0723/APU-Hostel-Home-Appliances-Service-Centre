@@ -37,7 +37,7 @@
               <EmptySpace min="-2" pref="417" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="338" max="32767" attributes="0"/>
+              <EmptySpace pref="348" max="32767" attributes="0"/>
               <Component id="lblLoginUsername1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="333" max="-2" attributes="0"/>
           </Group>
@@ -137,7 +137,7 @@
           <Font name="Times New Roman" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="EDIT TECHNICIAN PROFILE"/>
+        <Property name="text" type="java.lang.String" value="CREATE NEW TECHNICIAN"/>
         <Property name="alignmentY" type="float" value="0.0"/>
       </Properties>
     </Component>

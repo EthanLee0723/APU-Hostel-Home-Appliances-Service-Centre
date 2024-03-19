@@ -64,7 +64,7 @@ public class CreateTechnician extends javax.swing.JFrame {
 
         lblLoginUsername1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblLoginUsername1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblLoginUsername1.setText("EDIT TECHNICIAN PROFILE");
+        lblLoginUsername1.setText("CREATE NEW TECHNICIAN");
         lblLoginUsername1.setAlignmentY(0.0F);
 
         back.setText("BACK");
@@ -89,7 +89,7 @@ public class CreateTechnician extends javax.swing.JFrame {
                 .addComponent(btnCreateTechnician, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(417, 417, 417))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(338, Short.MAX_VALUE)
+                .addContainerGap(348, Short.MAX_VALUE)
                 .addComponent(lblLoginUsername1)
                 .addGap(333, 333, 333))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

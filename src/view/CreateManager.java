@@ -147,7 +147,11 @@ public class CreateManager extends javax.swing.JFrame {
         }
         else
         {
-             managerController.createManager(inputtedUsername, inputtedPwd);
+            managerController.createManager(inputtedUsername, inputtedPwd);
+            ManagerDashboard managerDashboard = new ManagerDashboard(loggedInManagerid);
+            managerDashboard.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_btnCreateManagerCreateActionPerformed
 
